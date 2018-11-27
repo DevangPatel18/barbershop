@@ -22,6 +22,7 @@ const SectionHeaderStyles = styled.div`
     font-weight: 100;
     color: #757575;
     padding-top: 20px;
+    line-height: 2.3rem;
   }
 `
 
