@@ -11,12 +11,16 @@ const AboutStyles = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 48%;
+    width: 51%;
     height: 100%;
     background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 1)
+        rgba(255, 255, 255, 1) 180%
+      ), linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1) 95%
       ),
       url('https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543266272/Barbershop/barber-1017457_1920.jpg');
     background-size: cover;
