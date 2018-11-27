@@ -102,7 +102,7 @@ const Services = () => (
         />
         <ul className="services-menu">
           {Menu.map(x => (
-            <li>
+            <li key={x.service}>
               <span>{x.service}</span>
               <span>{x.cost}</span>
             </li>

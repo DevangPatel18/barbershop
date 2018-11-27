@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from '../images/Logo.svg'
+import Button from './Button'
 
 const HeaderStyles = styled.div`
   position: relative;
@@ -41,23 +42,12 @@ const HeaderStyles = styled.div`
     min-width: 350px;
     margin: 0;
   }
-  
-  a {
-    color: white;
-    background: none;
-    padding: .85rem;
-    border: 5px solid #c2a300;
-    font-family: 'Roboto';
-    font-weight: 600;
-    font-size: 24px;
-    text-decoration: none;
-  }
 `
 
 const Header = ({ siteTitle }) => (
   <HeaderStyles>
     <div className="header-logo"><img src={logo} alt="" /></div>
-    <div className="header-reserve"><a href='#reservations'>BOOK RESERVATION</a></div>
+    <div className="header-reserve"><Button href='#reservations' text="BOOK RESERVATION" /></div>
   </HeaderStyles>
 )
 
