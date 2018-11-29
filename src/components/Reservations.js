@@ -68,6 +68,7 @@ class Reservations extends Component {
         <SectionHeader
           white
           center
+          narrowText
           headerTitle="Reservations"
           content="Proident adipisicing duis id dolor non occaecat ea pariatur mollit deserunt consectetur proident minim incididunt."
         />

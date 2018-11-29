@@ -35,9 +35,9 @@ const SectionHeaderStyles = styled.div`
     color: #757575;
     padding-top: 20px;
     line-height: 2.3rem;
+    max-width: ${props => (props.narrowText ? '650px' : '900px')};
+    text-align: ${props => (props.centerText ? 'center' : 'left')};
   }
-
-  max-width: 500px;
 
   ${props =>
     props.white &&
