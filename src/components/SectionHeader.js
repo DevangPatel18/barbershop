@@ -2,6 +2,10 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 const SectionHeaderStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   h2 {
     font-family: 'Neuton';
     font-size: 72px;
@@ -35,6 +39,7 @@ const SectionHeaderStyles = styled.div`
     color: #757575;
     padding-top: 20px;
     line-height: 2.3rem;
+    margin: 0 auto;
     max-width: ${props => (props.narrowText ? '650px' : '900px')};
     text-align: ${props => (props.centerText ? 'center' : 'left')};
   }
