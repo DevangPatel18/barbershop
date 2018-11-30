@@ -26,7 +26,6 @@ const QuoteStyles = styled.section`
   p {
     color: white;
     font-family: Roboto;
-    font-weight: 600;
   }
 
   .quote-line {

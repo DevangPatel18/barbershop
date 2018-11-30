@@ -5,6 +5,7 @@ import Quote from '../components/Quote'
 import Services from '../components/Services'
 import Reservations from '../components/Reservations'
 import Gallery from '../components/Gallery'
+import Contact from '../components/Contact'
 
 const IndexPage = () => (
   <Layout>
@@ -13,6 +14,7 @@ const IndexPage = () => (
     <Services />
     <Reservations />
     <Gallery />
+    <Contact />
   </Layout>
 )
 

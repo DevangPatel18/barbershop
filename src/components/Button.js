@@ -8,7 +8,6 @@ const ButtonStyles = styled.div`
     padding: 0.85rem;
     border: 5px solid #c2a300;
     font-family: 'Roboto';
-    font-weight: 600;
     font-size: 24px;
     text-decoration: none;
     text-shadow: 1px 1px 5px black;
