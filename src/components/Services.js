@@ -93,7 +93,7 @@ const Menu = [
 ]
 
 const Services = () => (
-  <ServicesStyles>
+  <ServicesStyles id="services">
     <div className="services">
       <div className="services-content">
         <SectionHeader

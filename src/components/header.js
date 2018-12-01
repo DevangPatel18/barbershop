@@ -45,7 +45,7 @@ const HeaderStyles = styled.div`
 `
 
 const Header = ({ siteTitle }) => (
-  <HeaderStyles>
+  <HeaderStyles id="home">
     <div className="header-logo"><img src={logo} alt="" /></div>
     <div className="header-reserve"><Button href='#reservations' text="BOOK RESERVATION" /></div>
   </HeaderStyles>

@@ -7,9 +7,11 @@ import Reservations from '../components/Reservations'
 import Gallery from '../components/Gallery'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 
 const IndexPage = () => (
   <Layout>
+    <Navbar />
     <About />
     <Quote />
     <Services />

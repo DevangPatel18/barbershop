@@ -95,7 +95,7 @@ const ContactStyles = styled.section`
 class Contact extends Component {
   render() {
     return (
-      <ContactStyles>
+      <ContactStyles id="contact">
         <div className="contact-screen" />
         <SectionHeader
           center

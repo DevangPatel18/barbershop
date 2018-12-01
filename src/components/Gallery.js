@@ -61,7 +61,7 @@ const GalleryStyles = styled.section`
 
 const Gallery = () => {
   return (
-    <GalleryStyles>
+    <GalleryStyles id="gallery">
       <SectionHeader
         center
         centerText

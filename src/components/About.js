@@ -47,7 +47,7 @@ const AboutStyles = styled.div`
 `
 
 const About = () => (
-  <AboutStyles>
+  <AboutStyles id="about">
     <div className="about">
       <div className="about-content">
         <SectionHeader
