@@ -54,7 +54,7 @@ class Navbar extends Component {
 
     this.state = {
       navBarBg: false,
-      halfHome: '',
+      navBreak: '',
     }
 
     this.navBarCheck = this.navBarCheck.bind(this)
@@ -65,7 +65,7 @@ class Navbar extends Component {
   componentDidMount() {
     let home = document.querySelector('#home')
 
-    this.setState({ halfHome: home.offsetHeight * 0.33 })
+    this.setState({ navBreak: home.offsetHeight * 0.33 })
 
     window.addEventListener('scroll', this.navBarCheck)
   }
@@ -83,7 +83,10 @@ class Navbar extends Component {
   }
 
   navBarCheck() {
-    this.setState({ navBarBg: window.scrollY > this.state.halfHome })
+    const navBarBg = window.scrollY > this.state.navBreak
+    if (navBarBg !== this.state.navBarBg) {
+      this.setState({ navBarBg })
+    }
   }
 
   render() {
