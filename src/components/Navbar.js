@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const NavbarStyles = styled.nav`
@@ -11,17 +11,18 @@ const NavbarStyles = styled.nav`
   font-size: 24px;
   font-weight: 100;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
+  transition: all 0.5s ease;
 
   ol {
-    padding: 0.5rem 0;
-    width: 980px;
+    padding: 3rem 0;
+    width: 1280px;
     float: right;
     display: flex;
     justify-content: space-around;
     margin: 0;
+    transition: all 0.5s ease;
   }
 
   li {
@@ -34,16 +35,40 @@ const NavbarStyles = styled.nav`
     text-decoration: none;
     color: white;
   }
+
+  ${props =>
+    props.navBarBg &&
+    css`
+      background-color: rgba(0, 0, 0, 0.9);
+
+      ol {
+        width: 980px;
+        padding: 0.5rem 0;
+      }
+    `};
 `
 
 class Navbar extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      navBarBg: false,
+      halfHome: '',
+    }
+
+    this.navBarCheck = this.navBarCheck.bind(this)
   }
 
   // componentWillMount() {}
 
-  // componentDidMount() {}
+  componentDidMount() {
+    let home = document.querySelector('#home')
+
+    this.setState({ halfHome: home.offsetHeight * 0.33 })
+
+    window.addEventListener('scroll', this.navBarCheck)
+  }
 
   // componentDidUpdate(prevProps, prevState) {}
 
@@ -53,11 +78,19 @@ class Navbar extends Component {
 
   // componentWillUpdate(nextProps, nextState) {}
 
-  // componentWillUnmount() {}
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.navBarCheck)
+  }
+
+  navBarCheck() {
+    this.setState({ navBarBg: window.scrollY > this.state.halfHome })
+  }
 
   render() {
+    const { navBarBg } = this.state
+
     return (
-      <NavbarStyles>
+      <NavbarStyles navBarBg={navBarBg}>
         <ol>
           <li>
             <AnchorLink href="#home">HOME</AnchorLink>
