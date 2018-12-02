@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import Scrollspy from 'react-scrollspy'
 
 const NavbarStyles = styled.nav`
   z-index: 99;
@@ -15,7 +16,7 @@ const NavbarStyles = styled.nav`
   justify-content: center;
   transition: all 0.5s ease;
 
-  ol {
+  ul {
     padding: 3rem 0;
     width: 1280px;
     float: right;
@@ -26,6 +27,7 @@ const NavbarStyles = styled.nav`
   }
 
   li {
+    transition: all 0.5s ease;
     list-style-type: none;
     padding-left: 0;
     margin: 0;
@@ -36,12 +38,16 @@ const NavbarStyles = styled.nav`
     color: white;
   }
 
+  .scrollSpy {
+    box-shadow: 0 3px 0px #c2a300;
+  }
+
   ${props =>
     props.navBarBg &&
     css`
       background-color: rgba(0, 0, 0, 0.9);
 
-      ol {
+      ul {
         width: 980px;
         padding: 0.5rem 0;
       }
@@ -94,7 +100,10 @@ class Navbar extends Component {
 
     return (
       <NavbarStyles navBarBg={navBarBg}>
-        <ol>
+        <Scrollspy
+          items={['home', 'about', 'services', 'gallery', 'contact']}
+          currentClassName="scrollSpy"
+        >
           <li>
             <AnchorLink href="#home">HOME</AnchorLink>
           </li>
@@ -110,7 +119,7 @@ class Navbar extends Component {
           <li>
             <AnchorLink href="#contact">CONTACT</AnchorLink>
           </li>
-        </ol>
+        </Scrollspy>
       </NavbarStyles>
     )
   }
