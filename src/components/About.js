@@ -17,7 +17,8 @@ const AboutStyles = styled.div`
         to right,
         rgba(255, 255, 255, 0),
         rgba(255, 255, 255, 1) 180%
-      ), linear-gradient(
+      ),
+      linear-gradient(
         to right,
         rgba(255, 255, 255, 0),
         rgba(255, 255, 255, 1) 95%
@@ -26,6 +27,7 @@ const AboutStyles = styled.div`
     background-size: cover;
     background-position: center;
     z-index: -1;
+    transition: all 0.5s;
   }
 
   .about {
@@ -37,12 +39,74 @@ const AboutStyles = styled.div`
     margin: 0 auto;
     display: flex;
     align-items: center;
+    transition: all 0.5s;
   }
 
   .about-content {
     max-width: 450px;
     margin-left: 4rem;
     margin-right: 2rem;
+  }
+
+  @media (max-width: 760px) {
+    ::before {
+      width: 100%;
+      height: 40%;
+    }
+
+    .about {
+      width: 100%;
+      background: none;
+      align-items: flex-end;
+    }
+
+    .about-content {
+      height: 60%;
+      font-size: 0.6075em;
+      margin: 0 2rem;
+      padding: 2rem 2rem 0 0;
+
+      h2 {
+        :after {
+          width: 70px;
+        }
+      }
+      p {
+        line-height: 1.335rem;
+      }
+    }
+  }
+
+  @media (min-width: 761px) {
+    .about-content {
+      font-size: calc(0.6075em + ((1vw - 7.61px) * 1.626));
+
+      h2 {
+        :after {
+          width: calc(70px + ((1vw - 7.61px) * 9.214))
+        }
+      }
+
+      p {
+        line-height: calc(1.335rem + ((1vw - 7.61px) * 4.7154));
+      }
+    }
+  }
+
+  @media (min-width: 1130px) {
+    .about-content {
+      font-size: 17px;
+
+      h2 {
+        :after {
+          width: 104px;
+        }
+      }
+
+      p {
+        line-height: 41.4px;
+      }
+    }
   }
 `
 

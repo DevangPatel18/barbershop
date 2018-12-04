@@ -9,7 +9,7 @@ const SectionHeaderStyles = styled.div`
 
   h2 {
     font-family: 'Neuton';
-    font-size: 72px;
+    font-size: 4.23em;
     font-weight: 100;
     color: #c2a300;
 
@@ -25,7 +25,7 @@ const SectionHeaderStyles = styled.div`
 
   p {
     font-family: 'Roboto';
-    font-size: 24px;
+    font-size: 1.41em;
     font-weight: 100;
     color: #757575;
     padding-top: 20px;
