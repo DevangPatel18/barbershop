@@ -84,6 +84,48 @@ const SectionHeaderStyles = styled.div`
         line-height: 1.3;
       }
     `};
+
+  @media (max-width: 760px) {
+    font-size: 0.6075em;
+
+    h2 {
+      :after {
+        width: 70px;
+      }
+    }
+
+    p {
+      line-height: 1.335rem;
+    }
+  }
+
+  @media (min-width: 761px) {
+    font-size: calc(0.6075em + ((1vw - 7.61px) * 1.626));
+
+    h2 {
+      :after {
+        width: calc(70px + ((1vw - 7.61px) * 9.214));
+      }
+    }
+
+    p {
+      line-height: calc(1.335rem + ((1vw - 7.61px) * 4.7154));
+    }
+  }
+
+  @media (min-width: 1130px) {
+    font-size: 17px;
+
+    h2 {
+      :after {
+        width: 104px;
+      }
+    }
+
+    p {
+      line-height: 41.4px;
+    }
+  }
 `
 
 const SectionHeader = props => {
