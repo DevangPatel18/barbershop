@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import Scrollspy from 'react-scrollspy'
+import 'hamburgers/dist/hamburgers.css'
 
 const NavbarStyles = styled.nav`
   z-index: 99;
@@ -19,7 +20,6 @@ const NavbarStyles = styled.nav`
   ul {
     padding: 3rem 0;
     width: 1280px;
-    float: right;
     display: flex;
     justify-content: space-around;
     margin: 0;
@@ -42,16 +42,55 @@ const NavbarStyles = styled.nav`
     box-shadow: 0 3px 0px #c2a300;
   }
 
+  button {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    background: white;
+    padding: 13px 7px 8px;
+    z-index: 3;
+    display: none;
+  }
+
   ${props =>
     props.navBarBg &&
     css`
-      background-color: rgba(0, 0, 0, 0.9);
+      @media (min-width: 761px) {
+        background-color: rgba(0, 0, 0, 0.9);
 
-      ul {
-        width: 980px;
-        padding: 0.5rem 0;
+        ul {
+          width: 980px;
+          padding: 0.5rem 0;
+        }
       }
     `};
+
+  @media (max-width: 760px) {
+    background-color: rgba(0, 0, 0, 0.9);
+    height: ${props => (props.menuIcon ? '210px' : '50px')};
+
+    ul {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 50px 0 0 0;
+      overflow: hidden;
+
+      li {
+        margin: 3px 0;
+        padding: 0 7px;
+      }
+
+      .scrollSpy {
+        box-shadow: 3px 0 0 #c2a300, -3px 0 0 #c2a300 ;
+      }
+    }
+
+    button {
+      display: block;
+    }
+    box-shadow: 0 0 5px black;
+  }
 `
 
 class Navbar extends Component {
@@ -61,9 +100,11 @@ class Navbar extends Component {
     this.state = {
       navBarBg: false,
       navBreak: '',
+      menuIcon: false,
     }
 
     this.navBarCheck = this.navBarCheck.bind(this)
+    this.handleMenuClick = this.handleMenuClick.bind(this)
   }
 
   // componentWillMount() {}
@@ -95,11 +136,26 @@ class Navbar extends Component {
     }
   }
 
+  handleMenuClick() {
+    this.setState({ menuIcon: !this.state.menuIcon })
+  }
+
   render() {
-    const { navBarBg } = this.state
+    const { navBarBg, menuIcon } = this.state
 
     return (
-      <NavbarStyles navBarBg={navBarBg}>
+      <NavbarStyles navBarBg={navBarBg} menuIcon={menuIcon}>
+        <button
+          className={`hamburger hamburger--slider ${
+            menuIcon ? 'is-active' : ''
+          }`}
+          type="button"
+          onClick={this.handleMenuClick}
+        >
+          <span className="hamburger-box">
+            <span className="hamburger-inner" />
+          </span>
+        </button>
         <Scrollspy
           items={['home', 'about', 'services', 'gallery', 'contact']}
           currentClassName="scrollSpy"
