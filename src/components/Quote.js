@@ -8,6 +8,7 @@ const QuoteStyles = styled.section`
   justify-content: center;
   align-items: center;
   height: 50vh;
+  font-size: 11px;
 
   ::before {
     content: '';
@@ -29,17 +30,27 @@ const QuoteStyles = styled.section`
   }
 
   .quote-line {
-    font-size: 48px;
-    margin-top: 1.5rem;
+    font-size: 2.67em;
+    margin: 0;
+    line-height: 2em;
+    text-align: center;
   }
 
   .quote-credit {
-    font-size: 24px;
-    margin-top: 0.5rem;
+    font-size: 1.33em;
+    margin: 0.375em;
   }
 
   .quote-quote {
     color: #c2a300;
+  }
+
+  @media (min-width: 761px) {
+    font-size: calc(11px + ((1vw - 7.61px) * 1.897));
+  }
+
+  @media (min-width: 1130px) {
+    font-size: 18px;
   }
 `
 
