@@ -8,7 +8,7 @@ const MINUTE_INCREMENT = 20
 
 const ReservationsStyles = styled.section`
   position: relative;
-  height: 100vh;
+  padding: 8rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,17 +31,40 @@ const ReservationsStyles = styled.section`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 5em;
+    padding-top: 3em;
 
     input {
       font-family: Roboto;
-      font-size: 24px;
-      padding: 20px;
-      margin-right: 2em;
-      width: 18em;
+      font-size: 1em;
+      padding: 0.833em;
+      width: 16em;
       text-align: center;
       font-weight: bolder;
       border: 1px solid black;
+    }
+  }
+
+  @media (max-width: 760px) {
+    padding: 4rem;
+    .reservations-form {
+      font-size: 15px;
+      flex-direction: column;
+
+      input {
+        margin-bottom: 1em;
+      }
+    }
+  }
+
+  @media (min-width: 761px) {
+    .reservations-form {
+      font-size: calc(15px + ((1vw - 7.61px) * 2.439));
+    }
+  }
+
+  @media (min-width: 1130px) {
+    .reservations-form {
+      font-size: 24px;
     }
   }
 `
