@@ -13,7 +13,7 @@ const GalleryStyles = styled.section`
     padding-top: 6rem;
     grid-template-columns: repeat(2, 1fr);
 
-    @media (min-width: 769px) {
+    @media (min-width: 761px) {
       grid-template-columns: repeat(4, 1fr);
     }
 
@@ -55,6 +55,14 @@ const GalleryStyles = styled.section`
       background-size: cover;
       background-position: center;
       padding-bottom: 100%;
+    }
+  }
+
+  @media (max-width: 760px) {
+    padding-top: 5rem;
+
+    .grid-container {
+      padding-top: 3rem;
     }
   }
 `
