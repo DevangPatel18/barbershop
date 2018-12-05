@@ -63,7 +63,6 @@ const AboutStyles = styled.div`
     .about-content {
       height: 60%;
       margin: 0;
-      padding: 2rem;
     }
   }
 `

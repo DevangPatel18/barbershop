@@ -100,8 +100,6 @@ const ServicesStyles = styled.section`
 
       &-content {
         margin: 0;
-        padding: 2rem;
-        
         .services-menu {
           li {
             max-width: 310px;
@@ -121,7 +119,7 @@ const ServicesStyles = styled.section`
       }
     }
   }
-  
+
   @media (min-width: 1130px) {
     .services-menu {
       li {
@@ -147,15 +145,16 @@ const Services = () => (
         <SectionHeader
           headerTitle="Services"
           content="Culpa ipsum nostrud mollit velit eu adipisicing. Nisi culpa cillum tempor culpa sit amet laboris."
-        />
-        <ul className="services-menu">
-          {Menu.map(x => (
-            <li key={x.service}>
-              <span>{x.service}</span>
-              <span>{x.cost}</span>
-            </li>
-          ))}
-        </ul>
+        >
+          <ul className="services-menu">
+            {Menu.map(x => (
+              <li key={x.service}>
+                <span>{x.service}</span>
+                <span>{x.cost}</span>
+              </li>
+            ))}
+          </ul>
+        </SectionHeader>
       </div>
     </div>
   </ServicesStyles>

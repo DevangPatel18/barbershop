@@ -6,6 +6,7 @@ const SectionHeaderStyles = styled.div`
   flex-direction: column;
   justify-content: center;
   z-index: 1;
+  padding: 2em;
 
   h2 {
     font-family: 'Neuton';
