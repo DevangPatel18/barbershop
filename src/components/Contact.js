@@ -2,20 +2,23 @@ import React, { Component } from 'react'
 import SectionHeader from './SectionHeader'
 import styled from 'styled-components'
 
+const contactImg =
+  'https://res.cloudinary.com/dbeqp2lyo/image/upload/c_scale,h_1080/v1543618290/Barbershop/jonathan-weiss-657313-unsplash.jpg'
+
 const ContactStyles = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8rem 0;
+  padding: 4rem 0;
 
   ::before {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
-    width: 35%;
-    height: 100%;
+    width: 500px;
+    height: 650px;
     background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0) 30%,
@@ -26,29 +29,23 @@ const ContactStyles = styled.section`
         rgba(255, 255, 255, 0) 80%,
         rgba(255, 255, 255, 1) 100%
       ),
-      url('https://res.cloudinary.com/dbeqp2lyo/image/upload/c_scale,h_1080/v1543618290/Barbershop/jonathan-weiss-657313-unsplash.jpg');
+      linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 1) 100%
+      ),
+      url(${contactImg});
     background-size: cover;
     background-position: left;
     z-index: -1;
   }
 
-  .contact-screen {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 66%;
-    height: 100%;
-    background-color: white;
-    z-index: 0;
-  }
-
   .contact-form {
     text-align: center;
     font-family: 'Roboto';
-    margin: 0 auto 1rem;
+    margin: 0 auto;
     max-width: 600px;
-    padding: 1rem;
+    padding: 0 1rem;
     z-index: 1;
 
     &-top {
@@ -62,6 +59,7 @@ const ContactStyles = styled.section`
 
     input,
     textarea {
+      opacity: 0.8;
       width: 100%;
       padding: 0.3rem 0.5rem;
       margin-top: 1.2rem;
@@ -90,13 +88,28 @@ const ContactStyles = styled.section`
       resize: none;
     }
   }
+
+  @media (max-width: 760px) {
+    padding: 4rem 0;
+
+    ::before {
+      width: 100%;
+    }
+
+    .contact-form-top {
+      flex-direction: column;
+      input[id='name'],
+      input[id='phone'] {
+        width: 100%;
+      }
+    }
+  }
 `
 
 class Contact extends Component {
   render() {
     return (
       <ContactStyles id="contact">
-        <div className="contact-screen" />
         <SectionHeader
           center
           centerText
