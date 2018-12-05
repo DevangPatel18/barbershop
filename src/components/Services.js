@@ -23,6 +23,7 @@ const ServicesStyles = styled.section`
     background-position: center;
     filter: saturate(0);
     z-index: -1;
+    transition: all 0.5s;
   }
 
   .services {
@@ -35,6 +36,7 @@ const ServicesStyles = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.5s;
   }
 
   .services-content {
@@ -61,13 +63,13 @@ const ServicesStyles = styled.section`
         width: 0;
         white-space: nowrap;
         color: #c2a300;
-        font-size: 24px;
+        font-size: 1em;
         font-weight: 600;
         content: '. . . . . . . . . . . . . . . . . . . . '
           '. . . . . . . . . . . . . . . . . . . . ';
       }
 
-      padding: 0.3em 0;
+      margin-bottom: 1.2em;
     }
 
     span:first-child {
@@ -80,6 +82,52 @@ const ServicesStyles = styled.section`
       padding-left: 0.33em;
       background: white;
       font-weight: 600;
+    }
+  }
+
+  @media (max-width: 760px) {
+    ::before {
+      width: 100%;
+      height: 40%;
+    }
+
+    .services {
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+      height: 60%;
+      bottom: 0;
+
+      &-content {
+        margin: 0;
+        padding: 2rem;
+        
+        .services-menu {
+          li {
+            max-width: 310px;
+            font-size: 14px;
+            margin-bottom: 0em;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 761px) {
+    .services-menu {
+      li {
+        font-size: calc(14px + ((1vw - 7.61px) * 2.71));
+        margin-bottom: calc((1vw - 7.61px) * 6.5041);
+      }
+    }
+  }
+  
+  @media (min-width: 1130px) {
+    .services-menu {
+      li {
+        font-size: 24px;
+        margin-bottom: 1.2em;
+      }
     }
   }
 `
