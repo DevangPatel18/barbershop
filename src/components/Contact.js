@@ -104,6 +104,19 @@ const ContactStyles = styled.section`
       }
     }
   }
+
+  @media (min-width: 761px) {
+    ::before {
+      height: calc(650px + ((1vw - 7.61px) * 94.85));
+      width: 500px;
+    }
+  }
+
+  @media (min-width: 1130px) {
+    ::before {
+      height: 1000px;
+    }
+  }
 `
 
 class Contact extends Component {
