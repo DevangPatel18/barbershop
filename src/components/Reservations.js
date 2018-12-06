@@ -49,9 +49,10 @@ const ReservationsStyles = styled.section`
     .reservations-form {
       font-size: 15px;
       flex-direction: column;
+      padding: 0;
 
       input {
-        margin-bottom: 1em;
+        margin-bottom: 2rem;
       }
     }
   }

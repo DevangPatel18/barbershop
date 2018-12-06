@@ -42,6 +42,11 @@ const FooterStyles = styled.section`
       margin-bottom: 0;
       width: 24px;
       height: 24px;
+      transition: all 0.2s;
+
+      :hover {
+        transform: scale(1.2);
+      }
     }
   }
 
