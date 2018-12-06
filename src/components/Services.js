@@ -95,7 +95,7 @@ const ServicesStyles = styled.section`
       align-items: flex-start;
       justify-content: flex-start;
       width: 100%;
-      height: 60%;
+      height: calc(60vh + 3px);
       bottom: 0;
 
       &-content {

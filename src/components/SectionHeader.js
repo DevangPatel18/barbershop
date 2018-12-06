@@ -6,7 +6,6 @@ const SectionHeaderStyles = styled.div`
   flex-direction: column;
   justify-content: center;
   z-index: 1;
-  padding: 2em;
 
   h2 {
     font-family: 'Neuton';
@@ -26,7 +25,7 @@ const SectionHeaderStyles = styled.div`
 
   p {
     font-family: 'Roboto';
-    font-size: 1.41em;
+    font-size: 1.5em;
     font-weight: 100;
     color: #757575;
     padding-top: 20px;
@@ -65,6 +64,7 @@ const SectionHeaderStyles = styled.div`
     `};
 
   @media (max-width: 760px) {
+    padding: 4em;
     font-size: 0.6075em;
 
     h2 {
@@ -79,6 +79,7 @@ const SectionHeaderStyles = styled.div`
   }
 
   @media (min-width: 761px) {
+    padding: 1rem;
     font-size: calc(0.6075em + ((1vw - 7.61px) * 1.626));
 
     h2 {

@@ -43,7 +43,7 @@ const AboutStyles = styled.div`
   }
 
   .about-content {
-    max-width: 450px;
+    max-width: 600px;
     margin-left: 4rem;
     margin-right: 2rem;
   }
@@ -52,16 +52,30 @@ const AboutStyles = styled.div`
     ::before {
       width: 100%;
       height: 40%;
+
+      background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0) 60%,
+          rgba(255, 255, 255, 1) 150%
+        ),
+        linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0) 60%,
+          rgba(255, 255, 255, 1) 95%
+        ),
+        url('https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543266272/Barbershop/barber-1017457_1920.jpg');
+      background-size: cover;
+      background-position: center;
     }
 
     .about {
       width: 100%;
-      background: none;
-      align-items: flex-end;
+      height: calc(60vh + 3px);
+      bottom: 0;
+      align-items: flex-start;
     }
 
     .about-content {
-      height: 60%;
       margin: 0;
     }
   }
