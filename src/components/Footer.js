@@ -10,8 +10,9 @@ const FooterStyles = styled.section`
   .footer-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
     max-width: 800px;
     margin: 0 auto;
   }
@@ -41,6 +42,25 @@ const FooterStyles = styled.section`
       margin-bottom: 0;
       width: 24px;
       height: 24px;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .footer-container {
+      max-width: 310px;
+      justify-content: space-around;
+    }
+
+    .footer-social {
+      justify-content: flex-start;
+      img {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .footer-copy {
+      font-size: 9px;
     }
   }
 `

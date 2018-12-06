@@ -64,28 +64,6 @@ const SectionHeaderStyles = styled.div`
       }
     `};
 
-  ${props =>
-    props.footer &&
-    css`
-      h2 {
-        font-size: 24px;
-        :after {
-          margin-top: 10px;
-          width: 30px;
-          border-top: 2px solid #9f9f9f;
-          ${props => props.center && css``};
-        }
-      }
-
-      p {
-        font-size: 14px;
-        color: white;
-        margin: 0;
-        padding: 0;
-        line-height: 1.3;
-      }
-    `};
-
   @media (max-width: 760px) {
     font-size: 0.6075em;
 
@@ -127,6 +105,39 @@ const SectionHeaderStyles = styled.div`
       line-height: 41.4px;
     }
   }
+
+  ${props =>
+    props.footer &&
+    css`
+      h2 {
+        font-size: 24px;
+        :after {
+          margin-top: 10px;
+          width: 30px;
+          border-top: 2px solid #9f9f9f;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        color: white;
+        margin: 0;
+        padding: 0;
+        line-height: 1.3;
+      }
+
+      @media (max-width: 650px) {
+        padding: 0 0 1.5em;
+        width: 130px;
+        h2 {
+          font-size: 20px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+    `};
 `
 
 const SectionHeader = props => {
