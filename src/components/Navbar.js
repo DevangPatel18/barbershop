@@ -47,9 +47,18 @@ const NavbarStyles = styled.nav`
     top: 0rem;
     left: 0rem;
     background: white;
-    padding: 13px 7px 8px;
+    height: 45px;
+    padding: 0px 5px;
     z-index: 3;
     display: none;
+
+    .hamburger-box .hamburger-inner {
+      &,
+      ::before,
+      ::after {
+        background: #c2a300;
+      }
+    }
   }
 
   ${props =>
@@ -67,22 +76,25 @@ const NavbarStyles = styled.nav`
 
   @media (max-width: 760px) {
     background-color: rgba(0, 0, 0, 0.9);
-    height: ${props => (props.menuIcon ? '210px' : '50px')};
+    height: ${props => (props.menuIcon ? '200px' : '45px')};
 
     ul {
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      padding: 50px 0 0 0;
+      padding: 45px 0 0 0;
       overflow: hidden;
 
       li {
-        margin: 3px 0;
+        font-size: 20px;
+        margin: 2px 0;
         padding: 0 7px;
       }
 
       .scrollSpy {
-        box-shadow: 3px 0 0 #c2a300, -3px 0 0 #c2a300 ;
+        box-shadow: none;
+        border-left: 3px solid #c2a300;
+        border-right: 3px solid #c2a300;
       }
     }
 
