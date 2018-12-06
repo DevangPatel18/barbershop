@@ -13,6 +13,7 @@ const ButtonStyles = styled.div`
     font-size: 1em;
     text-decoration: none;
     text-transform: uppercase;
+    transition: all 0.2s;
     cursor: pointer;
 
     ${props =>
@@ -22,6 +23,10 @@ const ButtonStyles = styled.div`
         text-shadow: 1px 1px 5px black;
         color: white;
       `};
+
+    :hover {
+      background: #c2a300;
+    }
   }
 
   @media (max-width: 760px) {

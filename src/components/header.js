@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../images/Logo.svg'
 import Button from './Button'
+
+const logo =
+  'https://res.cloudinary.com/dbeqp2lyo/image/upload/v1544105704/Barbershop/Logo.svg'
 
 const HeaderStyles = styled.div`
   position: relative;
