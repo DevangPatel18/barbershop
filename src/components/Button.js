@@ -1,17 +1,27 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const ButtonStyles = styled.div`
   margin: 1rem;
+
+  button,
   a {
-    color: white;
-    background: none;
+    background: rgba(255, 255, 255, 0.5);
     padding: 0.85rem;
     border: 5px solid #c2a300;
     font-family: 'Roboto';
     font-size: 1em;
     text-decoration: none;
-    text-shadow: 1px 1px 5px black;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    ${props =>
+      props.white &&
+      css`
+        background: none;
+        text-shadow: 1px 1px 5px black;
+        color: white;
+      `};
   }
 
   @media (max-width: 760px) {
@@ -28,8 +38,9 @@ const ButtonStyles = styled.div`
 `
 
 const Button = props => (
-  <ButtonStyles>
-    <a href={props.href}>{props.text}</a>
+  <ButtonStyles white={props.white}>
+    {props.href && <a href={props.href}>{props.text}</a>}
+    {props.submit && <button type="submit">submit</button>}
   </ButtonStyles>
 )
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SectionHeader from './SectionHeader'
 import styled from 'styled-components'
+import Button from './Button'
 
 const contactImg =
   'https://res.cloudinary.com/dbeqp2lyo/image/upload/c_scale,h_1080/v1543618290/Barbershop/jonathan-weiss-657313-unsplash.jpg'
@@ -64,20 +65,6 @@ const ContactStyles = styled.section`
       padding: 0.3rem 0.5rem;
       margin-top: 1.2rem;
       border: 1px solid black;
-    }
-
-    input[type='submit'] {
-      width: auto;
-      font-size: 1.3rem;
-      font-weight: bolder;
-      padding: 1rem;
-      background: white;
-      border: 5px solid #c2a300;
-
-      &:hover,
-      &:focus {
-        cursor: pointer;
-      }
     }
 
     ::placeholder {
@@ -171,7 +158,7 @@ class Contact extends Component {
             name="message"
             required
           />
-          <input type="submit" id="submit" name="submit" value="Submit" />
+          <Button submit/>
         </form>
       </ContactStyles>
     )
