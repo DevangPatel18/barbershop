@@ -8,7 +8,7 @@ const HeaderStyles = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  
+
   ::before {
     content: '';
     position: absolute;
@@ -22,12 +22,31 @@ const HeaderStyles = styled.div`
     filter: saturate(0) brightness(0.22);
     z-index: -1;
   }
-  
+
   .header-logo {
     height: 67%;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-transform: uppercase;
+    p {
+      font-size: 20px;
+      margin: 0.5em;
+
+      @media (min-width: 761px) {
+        font-size: calc(20px + ((1vw - 7.61px) * 0.863));
+      }
+    }
+
+    &-top {
+      font-family: Roboto;
+      color: #c2a300;
+    }
+
+    &-bottom {
+      color: white;
+    }
   }
 
   .header-reserve {
@@ -46,8 +65,14 @@ const HeaderStyles = styled.div`
 
 const Header = ({ siteTitle }) => (
   <HeaderStyles id="home">
-    <div className="header-logo"><img src={logo} alt="" /></div>
-    <div className="header-reserve"><Button href='#reservations' text="BOOK RESERVATION" white/></div>
+    <div className="header-logo">
+      <p className="header-logo-top">traditional men's hair salon</p>
+      <img src={logo} alt="logo" />
+      <p className="header-logo-bottom">classic & modern cuts</p>
+    </div>
+    <div className="header-reserve">
+      <Button href="#reservations" text="BOOK RESERVATION" white />
+    </div>
   </HeaderStyles>
 )
 
