@@ -13,7 +13,7 @@ const ContactStyles = styled.section`
   justify-content: center;
   padding: 4rem 0;
 
-  ::before {
+  .contact-bg {
     content: '';
     position: absolute;
     bottom: 0;
@@ -39,6 +39,16 @@ const ContactStyles = styled.section`
     background-size: cover;
     background-position: left;
     z-index: -1;
+
+    ::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 650px;
+      border-top: 1px solid white;
+    }
   }
 
   .contact-form {
@@ -79,8 +89,12 @@ const ContactStyles = styled.section`
   @media (max-width: 760px) {
     padding: 4rem 0;
 
-    ::before {
+    .contact-bg {
       width: 100%;
+
+      ::before {
+        width: 100%;
+      }
     }
 
     .contact-form-top {
@@ -93,15 +107,25 @@ const ContactStyles = styled.section`
   }
 
   @media (min-width: 761px) {
-    ::before {
+    .contact-bg {
       height: calc(650px + ((1vw - 7.61px) * 94.85));
       width: 500px;
+      box-shadow: 0 0 1px 5px white;
+
+      ::before {
+        height: calc(650px + ((1vw - 7.61px) * 94.85));
+      }
     }
   }
 
-  @media (min-width: 1130px) {
-    ::before {
-      height: 1000px;
+  @media (min-width: 985px) {
+    .contact-bg {
+      height: 100%;
+      box-shadow: 0 0 5px 5px white;
+
+      ::before {
+        height: 100%;
+      }
     }
   }
 `
@@ -110,6 +134,7 @@ class Contact extends Component {
   render() {
     return (
       <ContactStyles id="contact">
+        <div className="contact-bg" />
         <SectionHeader
           center
           centerText
@@ -158,7 +183,7 @@ class Contact extends Component {
             name="message"
             required
           />
-          <Button submit/>
+          <Button submit />
         </form>
       </ContactStyles>
     )
