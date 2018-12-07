@@ -8,24 +8,27 @@ const ButtonStyles = styled.div`
   a {
     background: rgba(255, 255, 255, 0.5);
     padding: 0.85rem;
-    border: 5px solid #c2a300;
+    border: 1px solid black;
     font-family: 'Roboto';
     font-size: 1em;
+    font-weight: bolder;
     text-decoration: none;
     text-transform: uppercase;
     transition: all 0.2s;
     cursor: pointer;
+    box-shadow: inset 0 0 0 5px #c2a300;
 
     ${props =>
       props.white &&
       css`
+        font-weight: normal;
         background: none;
         text-shadow: 1px 1px 5px black;
         color: white;
       `};
 
     :hover {
-      background: #c2a300;
+      box-shadow: inset 0 0 1px 2rem #c2a300;
     }
   }
 
