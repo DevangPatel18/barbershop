@@ -26,11 +26,11 @@ const HeaderStyles = styled.div`
   }
 
   .header-logo {
-    height: 67%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     text-transform: uppercase;
     p {
       font-size: 20px;
@@ -52,10 +52,7 @@ const HeaderStyles = styled.div`
   }
 
   .header-reserve {
-    height: 33%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 3rem;
   }
 
   img {
@@ -71,9 +68,9 @@ const Header = ({ siteTitle }) => (
       <p className="header-logo-top">traditional men's hair salon</p>
       <img src={logo} alt="logo" />
       <p className="header-logo-bottom">classic & modern cuts</p>
-    </div>
-    <div className="header-reserve">
-      <Button href="#reservations" text="BOOK RESERVATION" white />
+      <div className="header-reserve">
+        <Button href="#reservations" text="BOOK RESERVATION" white />
+      </div>
     </div>
   </HeaderStyles>
 )
