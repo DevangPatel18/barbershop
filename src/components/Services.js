@@ -3,16 +3,13 @@ import SectionHeader from './SectionHeader'
 import styled from 'styled-components'
 
 const ServicesStyles = styled.section`
-  position: relative;
-  height: 100vh;
+  display: flex;
+  flex-direction: row;
 
-  ::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
+  .services-bg {
+    position: relative;
     width: 50%;
-    height: 100%;
+    height: auto;
     background: radial-gradient(
         ellipse closest-side,
         rgba(255, 255, 255, 0),
@@ -24,15 +21,21 @@ const ServicesStyles = styled.section`
     filter: saturate(0);
     z-index: -1;
     transition: all 0.5s;
+
+    ::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-left: 1px solid white;
+    }
   }
 
   .services {
-    position: absolute;
-    left: 0;
     width: 50%;
-    height: 100%;
     background: white;
     margin: 0 auto;
+    padding: 6rem 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,17 +89,24 @@ const ServicesStyles = styled.section`
   }
 
   @media (max-width: 760px) {
-    ::before {
+    height: 100%;
+    flex-direction: column-reverse;
+
+    .services-bg {
       width: 100%;
-      height: 40%;
+      height: 300px;
+
+      ::before {
+        border-left: none;
+        border-bottom: 1px solid white;
+      }
     }
 
     .services {
       align-items: flex-start;
       justify-content: flex-start;
       width: 100%;
-      height: calc(60vh + 3px);
-      bottom: 0;
+      padding: 0;
 
       &-content {
         margin: 0;
@@ -112,6 +122,7 @@ const ServicesStyles = styled.section`
   }
 
   @media (min-width: 761px) {
+    min-height: 100vh;
     .services-menu {
       li {
         font-size: calc(14px + ((1vw - 7.61px) * 2.71));
@@ -157,6 +168,7 @@ const Services = () => (
         </SectionHeader>
       </div>
     </div>
+    <div className="services-bg" />
   </ServicesStyles>
 )
 
