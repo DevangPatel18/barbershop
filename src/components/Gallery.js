@@ -51,10 +51,19 @@ const GalleryStyles = styled.section`
       background: url('https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543501159/Barbershop/Gallery/arthur-humeau-756067-unsplash.jpg');
     }
 
+    .photo-container {
+      overflow: hidden;
+    }
+
     .photo {
       background-size: cover;
       background-position: center;
       padding-bottom: 100%;
+      transition: all 0.2s;
+
+      :hover {
+        transform: scale(1.2);
+      }
     }
   }
 
@@ -77,14 +86,30 @@ const Gallery = () => {
         content="Incididunt magna nostrud id mollit dolor fugiat occaecat in nisi commodo in velit incididunt sint. In incididunt aliqua sunt ad ut nostrud commo."
       />
       <div className="grid-container">
-        <div className="a photo" />
-        <div className="b photo" />
-        <div className="c photo" />
-        <div className="d photo" />
-        <div className="e photo" />
-        <div className="f photo" />
-        <div className="g photo" />
-        <div className="h photo" />
+        <div className="photo-container">
+          <div className="a photo" />
+        </div>
+        <div className="photo-container">
+          <div className="b photo" />
+        </div>
+        <div className="photo-container">
+          <div className="c photo" />
+        </div>
+        <div className="photo-container">
+          <div className="d photo" />
+        </div>
+        <div className="photo-container">
+          <div className="e photo" />
+        </div>
+        <div className="photo-container">
+          <div className="f photo" />
+        </div>
+        <div className="photo-container">
+          <div className="g photo" />
+        </div>
+        <div className="photo-container">
+          <div className="h photo" />
+        </div>
       </div>
     </GalleryStyles>
   )
