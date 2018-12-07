@@ -7,7 +7,6 @@ const logo =
 
 const HeaderStyles = styled.div`
   position: relative;
-  height: 100vh;
   display: flex;
   flex-direction: column;
 
@@ -26,12 +25,13 @@ const HeaderStyles = styled.div`
   }
 
   .header-logo {
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
+    padding: 4rem 0;
     p {
       font-size: 20px;
       margin: 0.5em;

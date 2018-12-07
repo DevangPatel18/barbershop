@@ -3,16 +3,13 @@ import styled from 'styled-components'
 import SectionHeader from '../components/SectionHeader'
 
 const AboutStyles = styled.div`
-  position: relative;
-  height: 100vh;
+  display: flex;
+  flex-direction: row;
 
-  ::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 51%;
-    height: 100%;
+  .about-bg {
+    position: relative;
+    width: 50%;
+    height: auto;
     background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0),
@@ -27,16 +24,21 @@ const AboutStyles = styled.div`
     background-size: cover;
     background-position: center;
     z-index: -1;
-    transition: all 0.5s;
+
+    ::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-right: 1px solid white;
+    }
   }
 
   .about {
-    position: absolute;
-    right: 0;
     width: 50%;
-    height: 100%;
     background: white;
     margin: 0 auto;
+    padding: 6rem 0;
     display: flex;
     align-items: center;
     transition: all 0.5s;
@@ -49,9 +51,12 @@ const AboutStyles = styled.div`
   }
 
   @media (max-width: 760px) {
-    ::before {
+    height: 100%;
+    flex-direction: column;
+
+    .about-bg {
       width: 100%;
-      height: 40%;
+      min-height: 300px;
 
       background: linear-gradient(
           to bottom,
@@ -66,12 +71,18 @@ const AboutStyles = styled.div`
         url('https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543266272/Barbershop/barber-1017457_1920.jpg');
       background-size: cover;
       background-position: center;
+
+      ::before {
+        border-right: none;
+        border-bottom: 1px solid white;
+      }
     }
 
     .about {
       width: 100%;
-      height: calc(60vh + 3px);
+      height: 100%;
       bottom: 0;
+      padding: 0;
       align-items: flex-start;
     }
 
@@ -79,10 +90,15 @@ const AboutStyles = styled.div`
       margin: 0;
     }
   }
+
+  @media (min-width: 761px) {
+    min-height: 100vh;
+  }
 `
 
 const About = () => (
   <AboutStyles id="about">
+    <div className="about-bg" />
     <div className="about">
       <div className="about-content">
         <SectionHeader
