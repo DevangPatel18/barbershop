@@ -7,8 +7,9 @@ const QuoteStyles = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  min-height: 50vh;
   font-size: 11px;
+  padding: 4rem 0;
 
   ::before {
     content: '';
