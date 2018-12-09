@@ -185,7 +185,9 @@ class Navbar extends Component {
             <AnchorLink href="#gallery">GALLERY</AnchorLink>
           </li>
           <li>
-            <AnchorLink href="#contact">CONTACT</AnchorLink>
+            <AnchorLink offset="-1" href="#contact">
+              CONTACT
+            </AnchorLink>
           </li>
         </Scrollspy>
       </NavbarStyles>
