@@ -52,12 +52,31 @@ const HeaderStyles = styled.div`
   }
 
   .header-reserve {
-    margin-top: 3rem;
+    margin-top: 2rem;
+  }
+
+  .header-info {
+    color: #b9b9b9;
+    text-align: center;
+    text-transform: none;
+    p {
+      @media (max-width: 760px) {
+        font-size: 12px
+      }
+
+      @media (min-width: 761px) {
+        font-size: calc(12px + ((1vw - 7.61px) * 2.439));
+      }
+
+      @media (min-width: 1130px) {
+        font-size: 21px;
+      }
+    }
   }
 
   img {
     width: 20vw;
-    min-width: 350px;
+    min-width: 300px;
     margin: 0;
   }
 `
@@ -68,6 +87,10 @@ const Header = ({ siteTitle }) => (
       <p className="header-logo-top">traditional men's hair salon</p>
       <img src={logo} alt="logo" />
       <p className="header-logo-bottom">classic & modern cuts</p>
+      <div className="header-info">
+        <p>M - F: 9 am - 7 pm / SAT: 10 am - 5 pm / SUN: Closed</p>
+        <p>(416) 999 9991 / barbs@shop.com</p>
+      </div>
       <div className="header-reserve">
         <Button href="#reservations" text="BOOK RESERVATION" white />
       </div>
