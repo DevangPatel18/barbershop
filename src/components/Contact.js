@@ -83,6 +83,7 @@ const ContactStyles = styled.section`
 
     textarea {
       resize: none;
+      box-shadow: none;
     }
   }
 
