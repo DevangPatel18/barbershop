@@ -32,13 +32,16 @@ const HeaderStyles = styled.div`
     justify-content: center;
     text-transform: uppercase;
     padding: 4rem 0;
-    p {
-      font-size: 20px;
-      margin: 0.5em;
+    font-size: 20px;
 
-      @media (min-width: 761px) {
-        font-size: calc(20px + ((1vw - 7.61px) * 0.863));
-      }
+    img {
+      width: 300px;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1em;
+      margin: 0.5em;
     }
 
     &-top {
@@ -48,6 +51,22 @@ const HeaderStyles = styled.div`
 
     &-bottom {
       color: white;
+    }
+
+    @media (min-width: 761px) {
+      img {
+        width: calc(300px + ((1vw - 7.61px) * 27.1));
+      }
+
+      font-size: calc(20px + ((1vw - 7.61px) * 2.71));
+    }
+
+    @media (min-width: 1130px) {
+      img {
+        width: calc(400px + ((1vw - 11.3px) * 15));
+      }
+
+      font-size: 30px;
     }
   }
 
@@ -59,9 +78,10 @@ const HeaderStyles = styled.div`
     color: #b9b9b9;
     text-align: center;
     text-transform: none;
+    margin-top: 1rem;
     p {
       @media (max-width: 760px) {
-        font-size: 12px
+        font-size: 12px;
       }
 
       @media (min-width: 761px) {
@@ -72,12 +92,14 @@ const HeaderStyles = styled.div`
         font-size: 21px;
       }
     }
-  }
 
-  img {
-    width: 20vw;
-    min-width: 300px;
-    margin: 0;
+    .divider {
+      color: #c2a300;
+
+      ::before {
+        content: '|';
+      }
+    }
   }
 `
 
@@ -88,8 +110,13 @@ const Header = ({ siteTitle }) => (
       <img src={logo} alt="logo" />
       <p className="header-logo-bottom">classic & modern cuts</p>
       <div className="header-info">
-        <p>M - F: 9 am - 7 pm / SAT: 10 am - 5 pm / SUN: Closed</p>
-        <p>(416) 999 9991 / barbs@shop.com</p>
+        <p>
+          M - F: 9 am - 7 pm <span className="divider" /> SAT: 10 am - 5 pm{' '}
+          <span className="divider" /> SUN: Closed
+        </p>
+        <p>
+          (416) 999 9991 <span className="divider" /> barbs@shop.com
+        </p>
       </div>
       <div className="header-reserve">
         <Button href="#reservations" text="BOOK RESERVATION" white />
