@@ -119,7 +119,7 @@ const Header = ({ siteTitle }) => (
         </p>
       </div>
       <div className="header-reserve">
-        <Button href="#reservations" text="BOOK RESERVATION" white />
+        <Button href="#reservations" text="BOOK RESERVATION" />
       </div>
     </div>
   </HeaderStyles>

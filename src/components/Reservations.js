@@ -108,7 +108,7 @@ class Reservations extends Component {
               this.setState({ date })
             }}
           />
-          <Button href="#" text="RESERVE" white />
+          <Button href="#" text="RESERVE" />
         </div>
       </ReservationsStyles>
     )
