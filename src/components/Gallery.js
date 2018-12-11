@@ -7,6 +7,8 @@ const GalleryStyles = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: white;
+  z-index: 0;
 
   .grid-container {
     display: grid;

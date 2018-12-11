@@ -12,6 +12,8 @@ const ContactStyles = styled.section`
   flex-direction: column;
   justify-content: center;
   padding: 4rem 0;
+  background: white;
+  z-index: 0;
 
   .contact-bg {
     content: '';
