@@ -1,46 +1,32 @@
 import React from 'react'
 import SectionHeader from './SectionHeader'
 import styled from 'styled-components'
+const servicesBgUrl =
+  'https://res.cloudinary.com/dbeqp2lyo/image/upload/c_scale,h_1071/v1543330907/Barbershop/joshua-sorenson-637596-unsplash.jpg'
 
 const ServicesStyles = styled.section`
   display: flex;
   flex-direction: row;
 
-  .services-bg {
-    position: relative;
-    width: 50%;
-    height: auto;
-    background: radial-gradient(
-        ellipse closest-side,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 1) 100%
-      ),
-      url('https://res.cloudinary.com/dbeqp2lyo/image/upload/c_scale,h_1071/v1543330907/Barbershop/joshua-sorenson-637596-unsplash.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: saturate(0);
-    z-index: -1;
-    transition: all 0.5s;
-
-    ::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-left: 1px solid white;
-    }
+  @media (max-width: 760px) {
+    height: 100%;
+    flex-direction: column-reverse;
   }
 
-  .services {
-    width: 50%;
-    background: white;
-    margin: 0 auto;
-    padding: 6rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s;
+  @media (min-width: 761px) {
+    min-height: 100vh;
   }
+`
+
+const ServicesContainerStyles = styled.div`
+  width: 50%;
+  background: white;
+  margin: 0 auto;
+  padding: 6rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
 
   .services-content {
     max-width: 450px;
@@ -48,96 +34,104 @@ const ServicesStyles = styled.section`
     margin-right: 2rem;
   }
 
-  ul.services-menu {
-    max-width: 400px;
-    font-family: 'Roboto';
-    font-size: 24px;
-    color: black;
-    overflow-x: hidden;
-    list-style: none;
-    margin: 0;
-    padding-top: 1em;
+  @media (max-width: 760px) {
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0;
+
+    &-content {
+      margin: 0;
+    }
   }
+`
 
-  .services-menu {
-    li {
-      :before {
-        float: left;
-        width: 0;
-        white-space: nowrap;
-        color: #c2a300;
-        font-size: 1em;
-        font-weight: 600;
-        content: '. . . . . . . . . . . . . . . . . . . . '
-          '. . . . . . . . . . . . . . . . . . . . ';
-      }
+const ServicesBackgroundStyles = styled.div`
+  position: relative;
+  width: 50%;
+  height: auto;
+  background: radial-gradient(
+      ellipse closest-side,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 1) 100%
+    ),
+    url(${servicesBgUrl});
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0);
+  z-index: -1;
+  transition: all 0.5s;
 
-      margin-bottom: 1.2em;
-    }
-
-    span:first-child {
-      padding-right: 0.33em;
-      background: white;
-    }
-
-    span + span {
-      float: right;
-      padding-left: 0.33em;
-      background: white;
-      font-weight: 600;
-    }
+  ::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid white;
   }
 
   @media (max-width: 760px) {
-    height: 100%;
-    flex-direction: column-reverse;
+    width: 100%;
+    height: 300px;
 
-    .services-bg {
-      width: 100%;
-      height: 300px;
-
-      ::before {
-        border-left: none;
-        border-bottom: 1px solid white;
-      }
+    ::before {
+      border-left: none;
+      border-bottom: 1px solid white;
     }
+  }
+`
 
-    .services {
-      align-items: flex-start;
-      justify-content: flex-start;
-      width: 100%;
-      padding: 0;
+const ServicesMenuStyles = styled.ul`
+  max-width: 400px;
+  font-family: 'Roboto';
+  font-size: 24px;
+  color: black;
+  overflow-x: hidden;
+  list-style: none;
+  margin: 0;
+  padding-top: 1em;
 
-      &-content {
-        margin: 0;
-        .services-menu {
-          li {
-            max-width: 310px;
-            font-size: 14px;
-            margin-bottom: 0em;
-          }
-        }
-      }
-    }
+  span:first-child {
+    padding-right: 0.33em;
+    background: white;
+  }
+
+  span + span {
+    float: right;
+    padding-left: 0.33em;
+    background: white;
+    font-weight: 600;
+  }
+`
+
+const ServicesMenuItemStyles = styled.li`
+  :before {
+    float: left;
+    width: 0;
+    white-space: nowrap;
+    color: #c2a300;
+    font-size: 1em;
+    font-weight: 600;
+    content: '. . . . . . . . . . . . . . . . . . . . '
+      '. . . . . . . . . . . . . . . . . . . . ';
+  }
+
+  margin-bottom: 1.2em;
+
+  @media (max-width: 760px) {
+    max-width: 310px;
+    font-size: 14px;
+    margin-bottom: 0em;
   }
 
   @media (min-width: 761px) {
-    min-height: 100vh;
-    .services-menu {
-      li {
-        font-size: calc(14px + ((1vw - 7.61px) * 2.71));
-        margin-bottom: calc((1vw - 7.61px) * 6.5041);
-      }
-    }
+    font-size: calc(14px + ((1vw - 7.61px) * 2.71));
+    margin-bottom: calc((1vw - 7.61px) * 6.5041);
   }
 
   @media (min-width: 1130px) {
-    .services-menu {
-      li {
-        font-size: 24px;
-        margin-bottom: 1.2em;
-      }
-    }
+    font-size: 24px;
+    margin-bottom: 1.2em;
   }
 `
 
@@ -151,24 +145,24 @@ const Menu = [
 
 const Services = () => (
   <ServicesStyles id="services">
-    <div className="services">
+    <ServicesContainerStyles>
       <div className="services-content">
         <SectionHeader
           headerTitle="Services"
           content="Culpa ipsum nostrud mollit velit eu adipisicing. Nisi culpa cillum tempor culpa sit amet laboris."
         >
-          <ul className="services-menu">
+          <ServicesMenuStyles>
             {Menu.map(x => (
-              <li key={x.service}>
+              <ServicesMenuItemStyles key={x.service}>
                 <span>{x.service}</span>
                 <span>{x.cost}</span>
-              </li>
+              </ServicesMenuItemStyles>
             ))}
-          </ul>
+          </ServicesMenuStyles>
         </SectionHeader>
       </div>
-    </div>
-    <div className="services-bg" />
+    </ServicesContainerStyles>
+    <ServicesBackgroundStyles />
   </ServicesStyles>
 )
 
