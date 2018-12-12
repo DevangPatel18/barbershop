@@ -15,120 +15,116 @@ const ContactStyles = styled.section`
   background: white;
   z-index: 0;
 
-  .contact-bg {
+  @media (max-width: 760px) {
+    padding: 4rem 0;
+  }
+`
+
+const ContactBackgroundStyles = styled.div`
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 650px;
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 1) 95%
+    ),
+    linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0) 80%,
+      rgba(255, 255, 255, 1) 100%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 1) 100%
+    ),
+    url(${contactImg});
+  background-size: cover;
+  background-position: left;
+  z-index: -1;
+
+  ::before {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 500px;
+    width: 100%;
     height: 650px;
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0) 30%,
-        rgba(255, 255, 255, 1) 95%
-      ),
-      linear-gradient(
-        to top,
-        rgba(255, 255, 255, 0) 80%,
-        rgba(255, 255, 255, 1) 100%
-      ),
-      linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(255, 255, 255, 1) 100%
-      ),
-      url(${contactImg});
-    background-size: cover;
-    background-position: left;
-    z-index: -1;
-
-    ::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 650px;
-      border-top: 1px solid white;
-    }
-  }
-
-  .contact-form {
-    text-align: center;
-    font-family: 'Roboto';
-    margin: 0 auto;
-    max-width: 600px;
-    padding: 0 1rem;
-    z-index: 1;
-
-    &-top {
-      display: flex;
-      justify-content: space-between;
-      input[id='name'],
-      input[id='phone'] {
-        width: 48%;
-      }
-    }
-
-    input,
-    textarea {
-      opacity: 0.8;
-      width: 100%;
-      padding: 0.3rem 0.5rem;
-      margin-top: 1.2rem;
-      border: 1px solid black;
-    }
-
-    ::placeholder {
-      color: #9f9f9f;
-    }
-
-    textarea {
-      resize: none;
-      box-shadow: none;
-    }
+    border-top: 1px solid white;
   }
 
   @media (max-width: 760px) {
-    padding: 4rem 0;
+    width: 100%;
 
-    .contact-bg {
+    ::before {
       width: 100%;
-
-      ::before {
-        width: 100%;
-      }
-    }
-
-    .contact-form-top {
-      flex-direction: column;
-      input[id='name'],
-      input[id='phone'] {
-        width: 100%;
-      }
     }
   }
 
   @media (min-width: 761px) {
-    .contact-bg {
-      height: calc(650px + ((1vw - 7.61px) * 94.85));
-      width: 500px;
-      box-shadow: 0 0 1px 5px white;
+    height: calc(650px + ((1vw - 7.61px) * 94.85));
+    width: 500px;
+    box-shadow: 0 0 1px 5px white;
 
-      ::before {
-        height: calc(650px + ((1vw - 7.61px) * 94.85));
-      }
+    ::before {
+      height: calc(650px + ((1vw - 7.61px) * 94.85));
     }
   }
 
   @media (min-width: 985px) {
-    .contact-bg {
-      height: 100%;
-      box-shadow: 0 0 5px 5px white;
+    height: 100%;
+    box-shadow: 0 0 5px 5px white;
 
-      ::before {
-        height: 100%;
-      }
+    ::before {
+      height: 100%;
+    }
+  }
+`
+
+const ContactFormStyles = styled.form`
+  text-align: center;
+  font-family: 'Roboto';
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 0 1rem;
+  z-index: 1;
+
+  .contact-form-top {
+    display: flex;
+    justify-content: space-between;
+    input[id='name'],
+    input[id='phone'] {
+      width: 48%;
+    }
+  }
+
+  input,
+  textarea {
+    opacity: 0.8;
+    width: 100%;
+    padding: 0.3rem 0.5rem;
+    margin-top: 1.2rem;
+    border: 1px solid black;
+  }
+
+  ::placeholder {
+    color: #9f9f9f;
+  }
+
+  textarea {
+    resize: none;
+    box-shadow: none;
+  }
+
+  @media (max-width: 760px) {
+    flex-direction: column;
+    input[id='name'],
+    input[id='phone'] {
+      width: 100%;
     }
   }
 `
@@ -137,7 +133,7 @@ class Contact extends Component {
   render() {
     return (
       <ContactStyles id="contact">
-        <div className="contact-bg" />
+        <ContactBackgroundStyles />
         <SectionHeader
           center
           centerText
@@ -146,7 +142,7 @@ class Contact extends Component {
           content="Ex proident dolor commodo ullamco quis officia id ad ut commodo laboris nostrud et ipsum."
         />
 
-        <form className="contact-form">
+        <ContactFormStyles>
           <div className="contact-form-top">
             <input
               type="text"
@@ -187,7 +183,7 @@ class Contact extends Component {
             required
           />
           <Button submit />
-        </form>
+        </ContactFormStyles>
       </ContactStyles>
     )
   }
