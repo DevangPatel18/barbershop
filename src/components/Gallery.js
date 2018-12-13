@@ -67,8 +67,8 @@ const Gallery = () => {
         content="Incididunt magna nostrud id mollit dolor fugiat occaecat in nisi commodo in velit incididunt sint. In incididunt aliqua sunt ad ut nostrud commo."
       />
       <GalleryGridStyles>
-        {GalleryGridUrls.map(photo => (
-          <GalleryGridPhotoStyles url={photo}>
+        {GalleryGridUrls.map((photo, i) => (
+          <GalleryGridPhotoStyles url={photo} key={i}>
             <div />
           </GalleryGridPhotoStyles>
         ))}

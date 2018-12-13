@@ -32,7 +32,7 @@ const AboutBackgroundStyles = styled.div`
     ),
     url('https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543266272/Barbershop/barber-1017457_1920.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: left;
   z-index: -1;
 
   ::before {
