@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 const QuoteStyles = styled.section`
   position: relative;
@@ -10,20 +12,6 @@ const QuoteStyles = styled.section`
   min-height: 50vh;
   font-size: 11px;
   padding: 4rem 0;
-
-  ::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543327067/Barbershop/pexels-photo-1453005.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.6);
-    z-index: -1;
-  }
 
   p {
     color: white;
@@ -55,16 +43,46 @@ const QuoteStyles = styled.section`
   }
 `
 
+const QuotesBgStyles = styled(Img)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.6);
+  z-index: -1;
+`
+
 const Quote = () => (
-  <QuoteStyles>
-    <p className="quote-line">
-      <span className="quote-quote">"</span> Looking good isn't self-importance;
-    </p>
-    <p className="quote-line">
-      it's self-respect <span className="quote-quote">"</span>
-    </p>
-    <p className="quote-credit">- Charles Hix</p>
-  </QuoteStyles>
+  <StaticQuery
+    query={graphql`
+      query QuoteBgQuery {
+        file(relativePath: { eq: "quote.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <QuoteStyles>
+        <QuotesBgStyles
+          style={{ position: 'absolute' }}
+          fluid={data.file.childImageSharp.fluid}
+        />
+        <p className="quote-line">
+          <span className="quote-quote">"</span> Looking good isn't
+          self-importance;
+        </p>
+        <p className="quote-line">
+          it's self-respect <span className="quote-quote">"</span>
+        </p>
+        <p className="quote-credit">- Charles Hix</p>
+      </QuoteStyles>
+    )}
+  />
 )
 
 export default Quote
