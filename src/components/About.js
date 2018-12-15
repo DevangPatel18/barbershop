@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import SectionHeader from '../components/SectionHeader'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 const AboutStyles = styled.div`
   display: flex;
@@ -16,30 +18,26 @@ const AboutStyles = styled.div`
   }
 `
 
-const AboutBackgroundStyles = styled.div`
-  position: relative;
+const AboutBackgroundStyles = styled(Img)`
   width: 50%;
-  height: auto;
-  background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 1) 180%
-    ),
-    linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 1) 95%
-    ),
-    url('https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543266272/Barbershop/barber-1017457_1920.jpg');
-  background-size: cover;
-  background-position: left;
-  z-index: -1;
 
-  ::before {
+  ::after {
     content: '';
     position: absolute;
-    width: 100%;
+    top: 0;
+    left: 0;
     height: 100%;
+    width: 100%;
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1) 180%
+      ),
+      linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1) 95%
+      );
     border-right: 1px solid white;
   }
 
@@ -47,21 +45,18 @@ const AboutBackgroundStyles = styled.div`
     width: 100%;
     min-height: 300px;
 
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0) 60%,
-        rgba(255, 255, 255, 1) 150%
-      ),
-      linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0) 60%,
-        rgba(255, 255, 255, 1) 95%
-      ),
-      url('https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543266272/Barbershop/barber-1017457_1920.jpg');
-    background-size: cover;
-    background-position: center;
+    ::after {
+      background-image: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0) 60%,
+          rgba(255, 255, 255, 1) 150%
+        ),
+        linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0) 60%,
+          rgba(255, 255, 255, 1) 95%
+        );
 
-    ::before {
       border-right: none;
       border-bottom: 1px solid white;
     }
@@ -97,19 +92,34 @@ const AboutContainerStyles = styled.div`
 `
 
 const About = () => (
-  <AboutStyles id="about">
-    <AboutBackgroundStyles />
-    <AboutContainerStyles>
-      <div className="about-content">
-        <SectionHeader
-          headerTitle={'Our Story'}
-          content={
-            'Officia ea ea minim veniam non tempor do pariatur fugiat. Minim dolor enim veniam proident cupidatat quis anim culpa minim sit labore et Lorem. Ad ex consectetur elit irure ex sint nostrud consectetur proident. Reprehenderit non incididunt consequat minim exercitation reprehenderit. Ea pariatur et aliqua et enim esse in. Laboris ut eiusmod veniam consectetur eu consectetur sunt pariatur laboris. Velit ut ea irure ad et duis.'
+  <StaticQuery
+    query={graphql`
+      query HomepageQuery {
+        file(relativePath: { eq: "about.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid
+            }
           }
-        />
-      </div>
-    </AboutContainerStyles>
-  </AboutStyles>
+        }
+      }
+    `}
+    render={data => (
+      <AboutStyles id="about">
+        <AboutBackgroundStyles fluid={data.file.childImageSharp.fluid} />
+        <AboutContainerStyles>
+          <div className="about-content">
+            <SectionHeader
+              headerTitle={'Our Story'}
+              content={
+                'Officia ea ea minim veniam non tempor do pariatur fugiat. Minim dolor enim veniam proident cupidatat quis anim culpa minim sit labore et Lorem. Ad ex consectetur elit irure ex sint nostrud consectetur proident. Reprehenderit non incididunt consequat minim exercitation reprehenderit. Ea pariatur et aliqua et enim esse in. Laboris ut eiusmod veniam consectetur eu consectetur sunt pariatur laboris. Velit ut ea irure ad et duis.'
+              }
+            />
+          </div>
+        </AboutContainerStyles>
+      </AboutStyles>
+    )}
+  />
 )
 
 export default About
