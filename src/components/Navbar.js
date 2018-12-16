@@ -162,6 +162,7 @@ class Navbar extends Component {
             menuIcon ? 'is-active' : ''
           }`}
           type="button"
+          aria-label="menubutton"
           onClick={this.handleMenuClick}
         >
           <span className="hamburger-box">
