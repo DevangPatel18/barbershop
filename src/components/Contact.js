@@ -116,10 +116,12 @@ const ContactFormStyles = styled.form`
   }
 
   @media (max-width: 760px) {
-    flex-direction: column;
-    input[id='name'],
-    input[id='phone'] {
-      width: 100%;
+    .contact-form-top {
+      flex-direction: column;
+      input[id='name'],
+      input[id='phone'] {
+        width: 100%;
+      }
     }
   }
 `
