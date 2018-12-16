@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 const logo =
-  'https://res.cloudinary.com/dbeqp2lyo/image/upload/v1544105704/Barbershop/Logo.svg'
+  'https://res.cloudinary.com/dbeqp2lyo/image/upload/v1544991151/Barbershop/Logo.svg'
 
 const HeaderStyles = styled.div`
   position: relative;
@@ -44,7 +44,7 @@ const HeaderLogoStyles = styled.div`
 
   .header-logo-top {
     font-family: Roboto;
-    color: #c2a300;
+    color: #af9300;
   }
 
   .header-logo-bottom {
@@ -88,7 +88,7 @@ const HeaderInfoStyles = styled.div`
   }
 
   .divider {
-    color: #c2a300;
+    color: #af9300;
 
     ::before {
       content: '|';

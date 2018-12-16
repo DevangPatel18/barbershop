@@ -106,7 +106,7 @@ const ServicesMenuItemStyles = styled.li`
     float: left;
     width: 0;
     white-space: nowrap;
-    color: #c2a300;
+    color: #af9300;
     font-size: 1em;
     font-weight: 600;
     content: '. . . . . . . . . . . . . . . . . . . . '

@@ -39,7 +39,7 @@ const NavbarStyles = styled.nav`
   }
 
   .scrollSpy {
-    box-shadow: 0 3px 0px #c2a300;
+    box-shadow: 0 3px 0px #af9300;
   }
 
   button {
@@ -56,7 +56,7 @@ const NavbarStyles = styled.nav`
       &,
       ::before,
       ::after {
-        background: #c2a300;
+        background: #af9300;
       }
     }
   }
@@ -93,8 +93,8 @@ const NavbarStyles = styled.nav`
 
       .scrollSpy {
         box-shadow: none;
-        border-left: 3px solid #c2a300;
-        border-right: 3px solid #c2a300;
+        border-left: 3px solid #af9300;
+        border-right: 3px solid #af9300;
       }
     }
 

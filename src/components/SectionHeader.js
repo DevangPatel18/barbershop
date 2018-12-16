@@ -11,7 +11,7 @@ const SectionHeaderStyles = styled.div`
     font-family: 'Neuton';
     font-size: 4.23em;
     font-weight: 100;
-    color: #c2a300;
+    color: #af9300;
 
     :after {
       content: '';
