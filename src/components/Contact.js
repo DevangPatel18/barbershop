@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import SectionHeader from './SectionHeader'
 import styled from 'styled-components'
 import Button from './Button'
-
-const contactImg =
-  'https://res.cloudinary.com/dbeqp2lyo/image/upload/c_scale,h_1080/v1543618290/Barbershop/jonathan-weiss-657313-unsplash.jpg'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 const ContactStyles = styled.section`
   position: relative;
@@ -20,34 +19,29 @@ const ContactStyles = styled.section`
   }
 `
 
-const ContactBackgroundStyles = styled.div`
-  content: '';
-  position: absolute;
+const ContactBackgroundStyles = styled(Img)`
   bottom: 0;
   left: 0;
   width: 500px;
   height: 650px;
-  background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 30%,
-      rgba(255, 255, 255, 1) 95%
-    ),
-    linear-gradient(
-      to top,
-      rgba(255, 255, 255, 0) 80%,
-      rgba(255, 255, 255, 1) 100%
-    ),
-    linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0) 50%,
-      rgba(255, 255, 255, 1) 100%
-    ),
-    url(${contactImg});
-  background-size: cover;
-  background-position: left;
-  z-index: -1;
 
-  ::before {
+  ::after {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 1) 95%
+      ),
+      linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0) 80%,
+        rgba(255, 255, 255, 1) 100%
+      ),
+      linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 1) 100%
+      );
+
     content: '';
     position: absolute;
     bottom: 0;
@@ -60,7 +54,7 @@ const ContactBackgroundStyles = styled.div`
   @media (max-width: 760px) {
     width: 100%;
 
-    ::before {
+    ::after {
       width: 100%;
     }
   }
@@ -70,16 +64,17 @@ const ContactBackgroundStyles = styled.div`
     width: 500px;
     box-shadow: 0 0 1px 5px white;
 
-    ::before {
-      height: calc(650px + ((1vw - 7.61px) * 94.85));
+    ::after {
+      height: calc(650px + ((1vw - 7.61px) * 94.97));
     }
   }
 
-  @media (min-width: 985px) {
-    height: 100%;
+  @media (min-width: 961px) {
+    height: 839px;
+
     box-shadow: 0 0 5px 5px white;
 
-    ::before {
+    ::after {
       height: 100%;
     }
   }
@@ -132,59 +127,77 @@ const ContactFormStyles = styled.form`
 class Contact extends Component {
   render() {
     return (
-      <ContactStyles id="contact">
-        <ContactBackgroundStyles />
-        <SectionHeader
-          center
-          centerText
-          narrowText
-          headerTitle="Contact"
-          content="Ex proident dolor commodo ullamco quis officia id ad ut commodo laboris nostrud et ipsum."
-        />
+      <StaticQuery
+        query={graphql`
+          query ContactBgQuery {
+            file(relativePath: { eq: "contact.jpg" }) {
+              childImageSharp {
+                fluid(maxWidth: 1920) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        `}
+        render={data => (
+          <ContactStyles id="contact">
+            <ContactBackgroundStyles
+              style={{ position: 'absolute' }}
+              fluid={data.file.childImageSharp.fluid}
+            />
+            <SectionHeader
+              center
+              centerText
+              narrowText
+              headerTitle="Contact"
+              content="Ex proident dolor commodo ullamco quis officia id ad ut commodo laboris nostrud et ipsum."
+            />
 
-        <ContactFormStyles>
-          <div className="contact-form-top">
-            <input
-              type="text"
-              placeholder="Name"
-              id="name"
-              name="name"
-              autoComplete="nope"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Phone"
-              id="phone"
-              name="phone"
-              autoComplete="nope"
-              required
-            />
-          </div>
-          <input
-            type="email"
-            placeholder="Email"
-            id="email"
-            name="email"
-            autoComplete="nope"
-            required
-          />
-          <input
-            type="text"
-            placeholder="Subject"
-            id="subject"
-            name="subject"
-          />
-          <textarea
-            rows="6"
-            placeholder="Message"
-            id="message"
-            name="message"
-            required
-          />
-          <Button submit />
-        </ContactFormStyles>
-      </ContactStyles>
+            <ContactFormStyles>
+              <div className="contact-form-top">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  id="name"
+                  name="name"
+                  autoComplete="nope"
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="Phone"
+                  id="phone"
+                  name="phone"
+                  autoComplete="nope"
+                  required
+                />
+              </div>
+              <input
+                type="email"
+                placeholder="Email"
+                id="email"
+                name="email"
+                autoComplete="nope"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Subject"
+                id="subject"
+                name="subject"
+              />
+              <textarea
+                rows="6"
+                placeholder="Message"
+                id="message"
+                name="message"
+                required
+              />
+              <Button submit />
+            </ContactFormStyles>
+          </ContactStyles>
+        )}
+      />
     )
   }
 }
