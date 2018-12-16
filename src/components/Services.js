@@ -1,8 +1,8 @@
 import React from 'react'
 import SectionHeader from './SectionHeader'
 import styled from 'styled-components'
-const servicesBgUrl =
-  'https://res.cloudinary.com/dbeqp2lyo/image/upload/c_scale,h_1071/v1543330907/Barbershop/joshua-sorenson-637596-unsplash.jpg'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 const ServicesStyles = styled.section`
   display: flex;
@@ -46,25 +46,22 @@ const ServicesContainerStyles = styled.div`
   }
 `
 
-const ServicesBackgroundStyles = styled.div`
-  position: relative;
+const ServicesBackgroundStyles = styled(Img)`
   width: 50%;
-  height: auto;
-  background: radial-gradient(
+  filter: saturate(0);
+
+  ::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: radial-gradient(
       ellipse closest-side,
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 1) 100%
-    ),
-    url(${servicesBgUrl});
-  background-size: cover;
-  background-position: center;
-  filter: saturate(0);
-  z-index: -1;
-  transition: all 0.5s;
+    );
+    transition: all 0.5s;
 
-  ::before {
-    content: '';
-    position: absolute;
     width: 100%;
     height: 100%;
     border-left: 1px solid white;
@@ -74,7 +71,7 @@ const ServicesBackgroundStyles = styled.div`
     width: 100%;
     height: 300px;
 
-    ::before {
+    ::after {
       border-left: none;
       border-bottom: 1px solid white;
     }
@@ -144,26 +141,41 @@ const Menu = [
 ]
 
 const Services = () => (
-  <ServicesStyles id="services">
-    <ServicesContainerStyles>
-      <div className="services-content">
-        <SectionHeader
-          headerTitle="Services"
-          content="Culpa ipsum nostrud mollit velit eu adipisicing. Nisi culpa cillum tempor culpa sit amet laboris."
-        >
-          <ServicesMenuStyles>
-            {Menu.map(x => (
-              <ServicesMenuItemStyles key={x.service}>
-                <span>{x.service}</span>
-                <span>{x.cost}</span>
-              </ServicesMenuItemStyles>
-            ))}
-          </ServicesMenuStyles>
-        </SectionHeader>
-      </div>
-    </ServicesContainerStyles>
-    <ServicesBackgroundStyles />
-  </ServicesStyles>
+  <StaticQuery
+    query={graphql`
+      query ServicesBgQuery {
+        file(relativePath: { eq: "services.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <ServicesStyles id="services">
+        <ServicesContainerStyles>
+          <div className="services-content">
+            <SectionHeader
+              headerTitle="Services"
+              content="Culpa ipsum nostrud mollit velit eu adipisicing. Nisi culpa cillum tempor culpa sit amet laboris."
+            >
+              <ServicesMenuStyles>
+                {Menu.map(x => (
+                  <ServicesMenuItemStyles key={x.service}>
+                    <span>{x.service}</span>
+                    <span>{x.cost}</span>
+                  </ServicesMenuItemStyles>
+                ))}
+              </ServicesMenuStyles>
+            </SectionHeader>
+          </div>
+        </ServicesContainerStyles>
+        <ServicesBackgroundStyles fluid={data.file.childImageSharp.fluid} />
+      </ServicesStyles>
+    )}
+  />
 )
 
 export default Services
