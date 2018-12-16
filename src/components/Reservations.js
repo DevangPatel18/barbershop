@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import Button from './Button'
 import Flatpickr from 'react-flatpickr'
 import 'flatpickr/dist/themes/airbnb.css'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 const MINUTE_INCREMENT = 20
-const reservationsBgUrl =
-  'https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543343106/Barbershop/pexels-photo-1319459.jpg'
 
 const ReservationsStyles = styled.section`
   position: relative;
@@ -16,22 +16,17 @@ const ReservationsStyles = styled.section`
   justify-content: center;
   align-items: center;
 
-  ::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url(${reservationsBgUrl});
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-  }
-
   @media (max-width: 760px) {
     padding: 4rem;
   }
+`
+
+const ReservationsBgStyles = styled(Img)`
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 `
 
 const ReservationsFormStyles = styled.div`
@@ -87,29 +82,48 @@ class Reservations extends Component {
   render() {
     const { date } = this.state
     return (
-      <ReservationsStyles id="reservations">
-        <SectionHeader
-          white
-          center
-          narrowText
-          headerTitle="Reservations"
-          content="Proident adipisicing duis id dolor non occaecat ea pariatur mollit deserunt consectetur proident minim incididunt."
-        />
-        <ReservationsFormStyles>
-          <Flatpickr
-            data-enable-time
-            options={{
-              dateFormat: 'F j, Y - h:i K',
-              minuteIncrement: MINUTE_INCREMENT,
-            }}
-            value={date}
-            onChange={date => {
-              this.setState({ date })
-            }}
-          />
-          <Button href="#" text="RESERVE" />
-        </ReservationsFormStyles>
-      </ReservationsStyles>
+      <StaticQuery
+        query={graphql`
+          query ReservationsBgQuery {
+            file(relativePath: { eq: "reservations.jpg" }) {
+              childImageSharp {
+                fluid(maxWidth: 1920) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        `}
+        render={data => (
+          <ReservationsStyles id="reservations">
+            <ReservationsBgStyles
+              style={{ position: 'absolute' }}
+              fluid={data.file.childImageSharp.fluid}
+            />
+            <SectionHeader
+              white
+              center
+              narrowText
+              headerTitle="Reservations"
+              content="Proident adipisicing duis id dolor non occaecat ea pariatur mollit deserunt consectetur proident minim incididunt."
+            />
+            <ReservationsFormStyles>
+              <Flatpickr
+                data-enable-time
+                options={{
+                  dateFormat: 'F j, Y - h:i K',
+                  minuteIncrement: MINUTE_INCREMENT,
+                }}
+                value={date}
+                onChange={date => {
+                  this.setState({ date })
+                }}
+              />
+              <Button href="#" text="RESERVE" />
+            </ReservationsFormStyles>
+          </ReservationsStyles>
+        )}
+      />
     )
   }
 }
