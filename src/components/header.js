@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Button from './Button'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 const logo =
   'https://res.cloudinary.com/dbeqp2lyo/image/upload/v1544105704/Barbershop/Logo.svg'
@@ -11,20 +13,13 @@ const HeaderStyles = styled.div`
   flex-direction: column;
   background: #282828;
   z-index: 0;
+`
 
-  ::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543258768/Barbershop/barber-2345701_1920.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: saturate(0) brightness(0.22);
-    z-index: -1;
-  }
+const HeaderBgStyles = styled(Img)`
+  width: 100%;
+  height: 100%;
+  filter: saturate(0) brightness(0.22);
+  z-index: -1;
 `
 
 const HeaderLogoStyles = styled.div`
@@ -102,23 +97,42 @@ const HeaderInfoStyles = styled.div`
 `
 
 const Header = ({ siteTitle }) => (
-  <HeaderStyles id="home">
-    <HeaderLogoStyles>
-      <p className="header-logo-top">traditional men's hair salon</p>
-      <img src={logo} alt="logo" />
-      <p className="header-logo-bottom">classic & modern cuts</p>
-      <HeaderInfoStyles>
-        <p>
-          M - F: 9 am - 7 pm <span className="divider" /> SAT: 10 am - 5 pm{' '}
-          <span className="divider" /> SUN: Closed
-        </p>
-        <p>
-          (416) 999 9991 <span className="divider" /> barbs@shop.com
-        </p>
-      </HeaderInfoStyles>
-      <Button href="#reservations" text="BOOK RESERVATION" />
-    </HeaderLogoStyles>
-  </HeaderStyles>
+  <StaticQuery
+    query={graphql`
+      query HomeBgQuery {
+        file(relativePath: { eq: "home.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <HeaderStyles id="home">
+        <HeaderBgStyles
+          style={{ position: 'absolute' }}
+          fluid={data.file.childImageSharp.fluid}
+        />
+        <HeaderLogoStyles>
+          <p className="header-logo-top">traditional men's hair salon</p>
+          <img src={logo} alt="logo" />
+          <p className="header-logo-bottom">classic & modern cuts</p>
+          <HeaderInfoStyles>
+            <p>
+              M - F: 9 am - 7 pm <span className="divider" /> SAT: 10 am - 5 pm{' '}
+              <span className="divider" /> SUN: Closed
+            </p>
+            <p>
+              (416) 999 9991 <span className="divider" /> barbs@shop.com
+            </p>
+          </HeaderInfoStyles>
+          <Button href="#reservations" text="BOOK RESERVATION" />
+        </HeaderLogoStyles>
+      </HeaderStyles>
+    )}
+  />
 )
 
 export default Header
