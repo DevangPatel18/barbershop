@@ -1,6 +1,8 @@
 import React from 'react'
 import SectionHeader from './SectionHeader'
 import styled from 'styled-components'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 const GalleryStyles = styled.section`
   padding-top: 10rem;
@@ -32,17 +34,15 @@ const GalleryGridStyles = styled.div`
 
 const GalleryGridPhotoStyles = styled.div`
   overflow: hidden;
+`
 
-  div {
-    background: url(${props => props.url});
-    background-size: cover;
-    background-position: center;
-    padding-bottom: 100%;
-    transition: all 0.2s;
+const GalleryGridImgStyles = styled(Img)`
+  height: 0;
+  padding-bottom: 100%;
+  transition: all 0.2s;
 
-    :hover {
-      transform: scale(1.2);
-    }
+  :hover {
+    transform: scale(1.2);
   }
 `
 
@@ -57,24 +57,45 @@ const GalleryGridUrls = [
   'https://res.cloudinary.com/dbeqp2lyo/image/upload/v1543501159/Barbershop/Gallery/arthur-humeau-756067-unsplash.jpg',
 ]
 
-const Gallery = () => {
-  return (
-    <GalleryStyles id="gallery">
-      <SectionHeader
-        center
-        centerText
-        headerTitle="Gallery"
-        content="Incididunt magna nostrud id mollit dolor fugiat occaecat in nisi commodo in velit incididunt sint. In incididunt aliqua sunt ad ut nostrud commo."
-      />
-      <GalleryGridStyles>
-        {GalleryGridUrls.map((photo, i) => (
-          <GalleryGridPhotoStyles url={photo} key={i}>
-            <div />
-          </GalleryGridPhotoStyles>
-        ))}
-      </GalleryGridStyles>
-    </GalleryStyles>
-  )
-}
+const Gallery = () => (
+  <StaticQuery
+    query={graphql`
+      query GalleryQuery {
+        GalleryImgs: allFile(filter: { absolutePath: { regex: "/gallery/" } }) {
+          edges {
+            node {
+              childImageSharp {
+                fluid(maxWidth: 512) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => {
+      const { edges: galleryImgData } = data.GalleryImgs
+
+      return (
+        <GalleryStyles id="gallery">
+          <SectionHeader
+            center
+            centerText
+            headerTitle="Gallery"
+            content="Incididunt magna nostrud id mollit dolor fugiat occaecat in nisi commodo in velit incididunt sint. In incididunt aliqua sunt ad ut nostrud commo."
+          />
+          <GalleryGridStyles>
+            {galleryImgData.map((data, i) => (
+              <GalleryGridPhotoStyles key={i}>
+                <GalleryGridImgStyles fluid={data.node.childImageSharp.fluid} />
+              </GalleryGridPhotoStyles>
+            ))}
+          </GalleryGridStyles>
+        </GalleryStyles>
+      )
+    }}
+  />
+)
 
 export default Gallery
