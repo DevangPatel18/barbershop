@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import SectionHeader from './SectionHeader'
 import styled from 'styled-components'
 import Button from './Button'
-
-const contactImg =
-  'https://res.cloudinary.com/dbeqp2lyo/image/upload/c_scale,h_1080/v1543618290/Barbershop/jonathan-weiss-657313-unsplash.jpg'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 const ContactStyles = styled.section`
   position: relative;
@@ -12,15 +11,22 @@ const ContactStyles = styled.section`
   flex-direction: column;
   justify-content: center;
   padding: 4rem 0;
+  background: white;
+  z-index: 0;
 
-  .contact-bg {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 500px;
-    height: 650px;
-    background: linear-gradient(
+  @media (max-width: 760px) {
+    padding: 4rem 0;
+  }
+`
+
+const ContactBackgroundStyles = styled(Img)`
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 650px;
+
+  ::after {
+    background-image: linear-gradient(
         to right,
         rgba(255, 255, 255, 0) 30%,
         rgba(255, 255, 255, 1) 95%
@@ -34,69 +40,82 @@ const ContactStyles = styled.section`
         45deg,
         rgba(255, 255, 255, 0) 50%,
         rgba(255, 255, 255, 1) 100%
-      ),
-      url(${contactImg});
-    background-size: cover;
-    background-position: left;
-    z-index: -1;
+      );
 
-    ::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 650px;
-      border-top: 1px solid white;
-    }
-  }
-
-  .contact-form {
-    text-align: center;
-    font-family: 'Roboto';
-    margin: 0 auto;
-    max-width: 600px;
-    padding: 0 1rem;
-    z-index: 1;
-
-    &-top {
-      display: flex;
-      justify-content: space-between;
-      input[id='name'],
-      input[id='phone'] {
-        width: 48%;
-      }
-    }
-
-    input,
-    textarea {
-      opacity: 0.8;
-      width: 100%;
-      padding: 0.3rem 0.5rem;
-      margin-top: 1.2rem;
-      border: 1px solid black;
-    }
-
-    ::placeholder {
-      color: #9f9f9f;
-    }
-
-    textarea {
-      resize: none;
-    }
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 650px;
+    border-top: 1px solid white;
   }
 
   @media (max-width: 760px) {
-    padding: 4rem 0;
+    width: 100%;
 
-    .contact-bg {
+    ::after {
       width: 100%;
-
-      ::before {
-        width: 100%;
-      }
     }
+  }
 
+  @media (min-width: 761px) {
+    height: calc(650px + ((1vw - 7.61px) * 94.85));
+    width: 500px;
+    box-shadow: 0 0 1px 5px white;
+
+    ::after {
+      height: calc(650px + ((1vw - 7.61px) * 94.97));
+    }
+  }
+
+  @media (min-width: 961px) {
+    height: 839px;
+
+    box-shadow: 0 0 5px 5px white;
+
+    ::after {
+      height: 100%;
+    }
+  }
+`
+
+const ContactFormStyles = styled.form`
+  text-align: center;
+  font-family: 'Roboto';
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 0 1rem;
+  z-index: 1;
+
+  .contact-form-top {
+    display: flex;
+    justify-content: space-between;
+    input[id='name'],
+    input[id='phone'] {
+      width: 48%;
+    }
+  }
+
+  input,
+  textarea {
+    opacity: 0.8;
+    width: 100%;
+    padding: 0.3rem 0.5rem;
+    margin-top: 1.2rem;
+    border: 1px solid black;
+  }
+
+  ::placeholder {
+    color: #9f9f9f;
+  }
+
+  textarea {
+    resize: none;
+    box-shadow: none;
+  }
+
+  @media (max-width: 760px) {
     .contact-form-top {
       flex-direction: column;
       input[id='name'],
@@ -105,87 +124,82 @@ const ContactStyles = styled.section`
       }
     }
   }
-
-  @media (min-width: 761px) {
-    .contact-bg {
-      height: calc(650px + ((1vw - 7.61px) * 94.85));
-      width: 500px;
-      box-shadow: 0 0 1px 5px white;
-
-      ::before {
-        height: calc(650px + ((1vw - 7.61px) * 94.85));
-      }
-    }
-  }
-
-  @media (min-width: 985px) {
-    .contact-bg {
-      height: 100%;
-      box-shadow: 0 0 5px 5px white;
-
-      ::before {
-        height: 100%;
-      }
-    }
-  }
 `
 
 class Contact extends Component {
   render() {
     return (
-      <ContactStyles id="contact">
-        <div className="contact-bg" />
-        <SectionHeader
-          center
-          centerText
-          narrowText
-          headerTitle="Contact"
-          content="Ex proident dolor commodo ullamco quis officia id ad ut commodo laboris nostrud et ipsum."
-        />
+      <StaticQuery
+        query={graphql`
+          query ContactBgQuery {
+            file(relativePath: { eq: "contact.jpg" }) {
+              childImageSharp {
+                fluid(maxWidth: 1920) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        `}
+        render={data => (
+          <ContactStyles id="contact">
+            <ContactBackgroundStyles
+              style={{ position: 'absolute' }}
+              fluid={data.file.childImageSharp.fluid}
+            />
+            <SectionHeader
+              center
+              centerText
+              narrowText
+              headerTitle="Contact"
+              content="Ex proident dolor commodo ullamco quis officia id ad ut commodo laboris nostrud et ipsum."
+            />
 
-        <form className="contact-form">
-          <div className="contact-form-top">
-            <input
-              type="text"
-              placeholder="Name"
-              id="name"
-              name="name"
-              autoComplete="nope"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Phone"
-              id="phone"
-              name="phone"
-              autoComplete="nope"
-              required
-            />
-          </div>
-          <input
-            type="email"
-            placeholder="Email"
-            id="email"
-            name="email"
-            autoComplete="nope"
-            required
-          />
-          <input
-            type="text"
-            placeholder="Subject"
-            id="subject"
-            name="subject"
-          />
-          <textarea
-            rows="6"
-            placeholder="Message"
-            id="message"
-            name="message"
-            required
-          />
-          <Button submit />
-        </form>
-      </ContactStyles>
+            <ContactFormStyles>
+              <div className="contact-form-top">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  id="name"
+                  name="name"
+                  autoComplete="nope"
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="Phone"
+                  id="phone"
+                  name="phone"
+                  autoComplete="nope"
+                  required
+                />
+              </div>
+              <input
+                type="email"
+                placeholder="Email"
+                id="email"
+                name="email"
+                autoComplete="nope"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Subject"
+                id="subject"
+                name="subject"
+              />
+              <textarea
+                rows="6"
+                placeholder="Message"
+                id="message"
+                name="message"
+                required
+              />
+              <Button submit />
+            </ContactFormStyles>
+          </ContactStyles>
+        )}
+      />
     )
   }
 }

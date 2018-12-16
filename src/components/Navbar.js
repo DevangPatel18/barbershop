@@ -46,7 +46,7 @@ const NavbarStyles = styled.nav`
     position: absolute;
     top: 0rem;
     left: 0rem;
-    background: white;
+    background: #282828;
     height: 45px;
     padding: 0px 5px;
     z-index: 3;
@@ -65,7 +65,7 @@ const NavbarStyles = styled.nav`
     props.navBarBg &&
     css`
       @media (min-width: 761px) {
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(40, 40, 40, 0.9);
 
         ul {
           width: 980px;
@@ -75,7 +75,7 @@ const NavbarStyles = styled.nav`
     `};
 
   @media (max-width: 760px) {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(40, 40, 40, 0.9);
     height: ${props => (props.menuIcon ? '200px' : '45px')};
 
     ul {
@@ -185,7 +185,9 @@ class Navbar extends Component {
             <AnchorLink href="#gallery">GALLERY</AnchorLink>
           </li>
           <li>
-            <AnchorLink href="#contact">CONTACT</AnchorLink>
+            <AnchorLink offset="-1" href="#contact">
+              CONTACT
+            </AnchorLink>
           </li>
         </Scrollspy>
       </NavbarStyles>
