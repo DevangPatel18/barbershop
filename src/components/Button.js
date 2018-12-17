@@ -16,11 +16,11 @@ const ButtonStyles = styled.div`
     text-transform: uppercase;
     transition: all 0.2s;
     cursor: pointer;
-    color: #c2a300;
-    box-shadow: inset 0 0 0 5px #c2a300;
+    color: #af9300;
+    box-shadow: inset 0 0 0 5px #af9300;
 
     :hover {
-      box-shadow: inset 0 0 1px 2rem #c2a300;
+      box-shadow: inset 0 0 1px 2rem #af9300;
       color: white;
     }
   }

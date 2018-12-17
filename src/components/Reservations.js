@@ -35,6 +35,18 @@ const ReservationsFormStyles = styled.div`
   align-items: center;
   padding-top: 3em;
 
+  label {
+    font-family: 'Neuton';
+    display: flex;
+    text-align: center;
+    align-items: center;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 2rem 0 0 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding-left: 1rem;
+  }
+
   input {
     font-family: Roboto;
     font-size: 1em;
@@ -50,7 +62,7 @@ const ReservationsFormStyles = styled.div`
     flex-direction: column;
     padding: 0;
 
-    input {
+    label {
       margin-bottom: 2rem;
     }
   }
@@ -62,6 +74,10 @@ const ReservationsFormStyles = styled.div`
   @media (min-width: 1130px) {
     font-size: 24px;
   }
+`
+
+const ReservationsFlatPickrStyles = styled(Flatpickr)`
+  margin-left: 1rem;
 `
 
 const currentTime = () => {
@@ -108,17 +124,21 @@ class Reservations extends Component {
               content="Proident adipisicing duis id dolor non occaecat ea pariatur mollit deserunt consectetur proident minim incididunt."
             />
             <ReservationsFormStyles>
-              <Flatpickr
-                data-enable-time
-                options={{
-                  dateFormat: 'F j, Y - h:i K',
-                  minuteIncrement: MINUTE_INCREMENT,
-                }}
-                value={date}
-                onChange={date => {
-                  this.setState({ date })
-                }}
-              />
+              <label>
+                Select date
+                <ReservationsFlatPickrStyles
+                  data-enable-time
+                  options={{
+                    dateFormat: 'F j, Y - h:i K',
+                    minuteIncrement: MINUTE_INCREMENT,
+                    tabindex: '0',
+                  }}
+                  value={date}
+                  onChange={date => {
+                    this.setState({ date })
+                  }}
+                />
+              </label>
               <Button href="#" text="RESERVE" />
             </ReservationsFormStyles>
           </ReservationsStyles>

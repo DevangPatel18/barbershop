@@ -31,7 +31,7 @@ const QuoteStyles = styled.section`
   }
 
   .quote-quote {
-    color: #c2a300;
+    color: #af9300;
   }
 
   @media (min-width: 761px) {
