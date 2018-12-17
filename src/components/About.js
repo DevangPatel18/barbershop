@@ -58,12 +58,12 @@ const AboutBackgroundStyles = styled(Img)`
         );
 
       border-right: none;
-      border-bottom: 1px solid white;
     }
   }
 `
 
 const AboutContainerStyles = styled.div`
+  position: relative;
   width: 50%;
   background: white;
   margin: 0 auto;
@@ -71,6 +71,10 @@ const AboutContainerStyles = styled.div`
   display: flex;
   align-items: center;
   transition: all 0.5s;
+
+  ::before {
+    display: none;
+  }
 
   .about-content {
     max-width: 600px;
@@ -84,6 +88,15 @@ const AboutContainerStyles = styled.div`
     bottom: 0;
     padding: 0;
     align-items: flex-start;
+
+    ::before {
+      display: block;
+      position: absolute;
+      top: -1px;
+      content: '';
+      width: 100%;
+      border-top: 3px solid white;
+    }
 
     .about-content {
       margin: 0;
