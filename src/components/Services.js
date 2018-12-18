@@ -19,6 +19,7 @@ const ServicesStyles = styled.section`
 `
 
 const ServicesContainerStyles = styled.div`
+  position: relative;
   width: 50%;
   background: white;
   margin: 0 auto;
@@ -27,6 +28,10 @@ const ServicesContainerStyles = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.5s;
+
+  ::before {
+    display: none;
+  }
 
   .services-content {
     max-width: 450px;
@@ -39,6 +44,16 @@ const ServicesContainerStyles = styled.div`
     justify-content: flex-start;
     width: 100%;
     padding: 0;
+
+    ::before {
+      display: block;
+      position: absolute;
+      top: -1px;
+      content: '';
+      width: 100%;
+      border-top: 3px solid white;
+      z-index: 1;
+    }
 
     .services-content {
       margin: 0;
@@ -73,7 +88,6 @@ const ServicesBackgroundStyles = styled(Img)`
 
     ::after {
       border-left: none;
-      border-bottom: 1px solid white;
     }
   }
 `
