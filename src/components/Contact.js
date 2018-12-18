@@ -132,6 +132,13 @@ const ContactFormStyles = styled.form`
 `
 
 class Contact extends Component {
+  handleNumberCheck(evt) {
+    var ch = String.fromCharCode(evt.which)
+
+    if (!/[0-9]/.test(ch)) {
+      evt.preventDefault()
+    }
+  }
   render() {
     return (
       <StaticQuery
@@ -179,6 +186,7 @@ class Contact extends Component {
                     id="phone"
                     name="phone"
                     autoComplete="nope"
+                    onKeyPress={evt => this.handleNumberCheck(evt)}
                     required
                   />
                 </label>
