@@ -8,7 +8,7 @@ const SectionHeaderStyles = styled.div`
   z-index: 1;
 
   h2 {
-    font-family: 'Neuton';
+    font-family: 'Frank Ruhl Libre';
     font-size: 4.23em;
     font-weight: 100;
     color: #af9300;

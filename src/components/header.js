@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 const logo =
-  'https://res.cloudinary.com/dbeqp2lyo/image/upload/v1544991151/Barbershop/Logo.svg'
+  'https://res.cloudinary.com/dbeqp2lyo/image/upload/v1545150764/Barbershop/Logo.svg'
 
 const HeaderStyles = styled.div`
   position: relative;
@@ -48,6 +48,7 @@ const HeaderLogoStyles = styled.div`
   }
 
   .header-logo-bottom {
+    font-family: 'Frank Ruhl Libre';
     color: white;
   }
 
@@ -73,6 +74,8 @@ const HeaderInfoStyles = styled.div`
   text-align: center;
   text-transform: none;
   margin: 1rem 0 2rem;
+  font-family: 'Frank Ruhl Libre';
+
   p {
     @media (max-width: 760px) {
       font-size: 12px;
