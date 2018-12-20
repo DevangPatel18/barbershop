@@ -33,12 +33,6 @@ const ServicesContainerStyles = styled.div`
     display: none;
   }
 
-  .services-content {
-    max-width: 450px;
-    margin-left: 4rem;
-    margin-right: 2rem;
-  }
-
   @media (max-width: 760px) {
     align-items: flex-start;
     justify-content: flex-start;
@@ -54,10 +48,20 @@ const ServicesContainerStyles = styled.div`
       border-top: 3px solid white;
       z-index: 1;
     }
+  }
+`
 
-    .services-content {
-      margin: 0;
-    }
+const ServicesSectionHeader = styled(SectionHeader)`
+  max-width: 450px;
+  margin-left: 4rem;
+  margin-right: 2rem;
+
+  p {
+    text-align: center;
+  }
+
+  @media (max-width: 760px) {
+    margin: 0 auto;
   }
 `
 
@@ -93,14 +97,14 @@ const ServicesBackgroundStyles = styled(Img)`
 `
 
 const ServicesMenuStyles = styled.ul`
-  max-width: 400px;
   font-family: 'Roboto';
   font-size: 24px;
   color: black;
   overflow-x: hidden;
   list-style: none;
-  margin: 0;
   padding-top: 1em;
+  width: 100%;
+  margin: 0 auto;
 
   span:first-child {
     padding-right: 0.33em;
@@ -112,6 +116,10 @@ const ServicesMenuStyles = styled.ul`
     padding-left: 0.33em;
     background: white;
     font-weight: 600;
+  }
+
+  @media (min-width: 1130px) {
+    width: 411px;
   }
 `
 
@@ -127,17 +135,16 @@ const ServicesMenuItemStyles = styled.li`
       '. . . . . . . . . . . . . . . . . . . . ';
   }
 
-  margin-bottom: 1.2em;
+  margin: 0 auto;
 
   @media (max-width: 760px) {
     max-width: 310px;
     font-size: 14px;
-    margin-bottom: 0em;
   }
 
   @media (min-width: 761px) {
     font-size: calc(14px + ((1vw - 7.61px) * 2.71));
-    margin-bottom: calc((1vw - 7.61px) * 6.5041);
+    margin-bottom: calc((1vw - 7.61px) * 7.826);
   }
 
   @media (min-width: 1130px) {
@@ -170,21 +177,19 @@ const Services = () => (
     render={data => (
       <ServicesStyles id="services">
         <ServicesContainerStyles>
-          <div className="services-content">
-            <SectionHeader
-              headerTitle="Services"
-              content="Culpa ipsum nostrud mollit velit eu adipisicing. Nisi culpa cillum tempor culpa sit amet laboris."
-            >
-              <ServicesMenuStyles>
-                {Menu.map(x => (
-                  <ServicesMenuItemStyles key={x.service}>
-                    <span>{x.service}</span>
-                    <span>{x.cost}</span>
-                  </ServicesMenuItemStyles>
-                ))}
-              </ServicesMenuStyles>
-            </SectionHeader>
-          </div>
+          <ServicesSectionHeader
+            headerTitle="Services"
+            content="Culpa ipsum nostrud mollit velit eu adipisicing. Nisi culpa cillum tempor culpa sit amet laboris."
+          >
+            <ServicesMenuStyles>
+              {Menu.map(x => (
+                <ServicesMenuItemStyles key={x.service}>
+                  <span>{x.service}</span>
+                  <span>{x.cost}</span>
+                </ServicesMenuItemStyles>
+              ))}
+            </ServicesMenuStyles>
+          </ServicesSectionHeader>
         </ServicesContainerStyles>
         <ServicesBackgroundStyles fluid={data.file.childImageSharp.fluid} />
       </ServicesStyles>
