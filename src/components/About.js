@@ -76,12 +76,6 @@ const AboutContainerStyles = styled.div`
     display: none;
   }
 
-  .about-content {
-    max-width: 600px;
-    margin-left: 4rem;
-    margin-right: 2rem;
-  }
-
   @media (max-width: 760px) {
     width: 100%;
     height: 100%;
@@ -97,10 +91,16 @@ const AboutContainerStyles = styled.div`
       width: 100%;
       border-top: 3px solid white;
     }
+  }
+`
 
-    .about-content {
-      margin: 0;
-    }
+const AboutSectionHeader = styled(SectionHeader)`
+  max-width: 600px;
+  margin-left: 4rem;
+  margin-right: 2rem;
+
+  @media (max-width: 760px) {
+    margin: 0 auto;
   }
 `
 
@@ -121,14 +121,12 @@ const About = () => (
       <AboutStyles id="about">
         <AboutBackgroundStyles fluid={data.file.childImageSharp.fluid} />
         <AboutContainerStyles>
-          <div className="about-content">
-            <SectionHeader
-              headerTitle={'Our Story'}
-              content={
-                'Officia ea ea minim veniam non tempor do pariatur fugiat. Minim dolor enim veniam proident cupidatat quis anim culpa minim sit labore et Lorem. Ad ex consectetur elit irure ex sint nostrud consectetur proident. Reprehenderit non incididunt consequat minim exercitation reprehenderit. Ea pariatur et aliqua et enim esse in. Laboris ut eiusmod veniam consectetur eu consectetur sunt pariatur laboris. Velit ut ea irure ad et duis.'
-              }
-            />
-          </div>
+          <AboutSectionHeader
+            headerTitle={'Our Story'}
+            content={
+              'Officia ea ea minim veniam non tempor do pariatur fugiat. Minim dolor enim veniam proident cupidatat quis anim culpa minim sit labore et Lorem. Ad ex consectetur elit irure ex sint nostrud consectetur proident. Reprehenderit non incididunt consequat minim exercitation reprehenderit. Ea pariatur et aliqua et enim esse in. Laboris ut eiusmod veniam consectetur eu consectetur sunt pariatur laboris. Velit ut ea irure ad et duis.'
+            }
+          />
         </AboutContainerStyles>
       </AboutStyles>
     )}
