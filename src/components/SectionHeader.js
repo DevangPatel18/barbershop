@@ -143,29 +143,30 @@ const DividerStyles = styled(Divider)`
   }
 
   ${props =>
-    props.white &&
-    css`
-      path {
-        stroke: white;
-      }
+    props.white === 'true'
+      ? `
+          path {
+            stroke: white;
+          }
 
-      .divider_svg__filled {
-        fill: white;
-      }
-    `}
+          .divider_svg__filled {
+            fill: white;
+          }
+        `
+      : ''}
 `
 
 const SectionHeader = props => {
-  const { headerTitle, content } = props
+  const { headerTitle, content, footer, white, children } = props
 
   return (
     <SectionHeaderStyles {...props}>
       <h2>
         {headerTitle}
-        {!props.footer && <DividerStyles white={props.white} />}
+        {!footer && <DividerStyles white={white ? 'true' : 'false'} />}
       </h2>
       {content && <p>{content}</p>}
-      {props.children}
+      {children}
     </SectionHeaderStyles>
   )
 }
