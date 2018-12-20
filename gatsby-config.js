@@ -30,10 +30,12 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Neuton', 'Roboto:300, 700', ]
-        }
-      }
-    }
+          families: ['Frank Ruhl Libre', 'Roboto:300, 700'],
+        },
+      },
+    },
+    'gatsby-plugin-svgr',
+    'gatsby-plugin-offline',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',

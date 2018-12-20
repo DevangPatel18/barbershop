@@ -129,6 +129,10 @@ const Footer = () => {
         >
           CC 3.0 BY
         </a>
+        {'. Vector dividers '}
+        <a href="https://www.freepik.com/free-vector/dividers-collection-in-calligraphic-style_2382823.htm">
+          Designed by Freepik
+        </a>
       </FooterCopyStyles>
     </FooterStyles>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { ReactComponent as Divider } from '../images/divider.svg'
 
 const SectionHeaderStyles = styled.div`
   display: flex;
@@ -8,19 +9,13 @@ const SectionHeaderStyles = styled.div`
   z-index: 1;
 
   h2 {
-    font-family: 'Neuton';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Frank Ruhl Libre';
     font-size: 4.23em;
     font-weight: 100;
     color: #af9300;
-
-    :after {
-      content: '';
-      display: block;
-      margin-top: 20px;
-      width: 104px;
-      border-top: 3px solid #9f9f9f;
-      ${props => props.center && css``};
-    }
   }
 
   p {
@@ -37,13 +32,6 @@ const SectionHeaderStyles = styled.div`
   ${props =>
     props.center &&
     css`
-      h2 {
-        text-align: center;
-        :after {
-          margin: 20px auto 0;
-        }
-      }
-
       p {
         margin: 0 auto;
       }
@@ -66,12 +54,6 @@ const SectionHeaderStyles = styled.div`
   @media (max-width: 760px) {
     padding: 4em;
     font-size: 0.6075em;
-
-    h2 {
-      :after {
-        width: 70px;
-      }
-    }
 
     p {
       line-height: 1.335rem;
@@ -112,10 +94,14 @@ const SectionHeaderStyles = styled.div`
     css`
       h2 {
         font-size: 24px;
+        align-items: flex-start;
         :after {
+          content: '';
           margin-top: 10px;
           width: 30px;
           border-top: 2px solid #9f9f9f;
+          left: 0;
+          transform: none;
         }
       }
 
@@ -141,14 +127,46 @@ const SectionHeaderStyles = styled.div`
     `};
 `
 
+const DividerStyles = styled(Divider)`
+  display: block;
+  margin-top: 0.3em;
+  transition: all 0.2s;
+  max-width: 4em;
+
+  path {
+    stroke: rgb(159, 159, 159);
+    stroke-width: 4px;
+  }
+
+  .divider_svg__filled {
+    fill: rgb(159, 159, 159);
+  }
+
+  ${props =>
+    props.white === 'true'
+      ? `
+          path {
+            stroke: white;
+          }
+
+          .divider_svg__filled {
+            fill: white;
+          }
+        `
+      : ''}
+`
+
 const SectionHeader = props => {
-  const { headerTitle, content } = props
+  const { headerTitle, content, footer, white, children } = props
 
   return (
     <SectionHeaderStyles {...props}>
-      <h2>{headerTitle}</h2>
+      <h2>
+        {headerTitle}
+        {!footer && <DividerStyles white={white ? 'true' : 'false'} />}
+      </h2>
       {content && <p>{content}</p>}
-      {props.children}
+      {children}
     </SectionHeaderStyles>
   )
 }

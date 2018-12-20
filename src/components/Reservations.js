@@ -36,7 +36,7 @@ const ReservationsFormStyles = styled.div`
   padding-top: 3em;
 
   label {
-    font-family: 'Neuton';
+    font-family: 'Frank Ruhl Libre';
     display: flex;
     text-align: center;
     align-items: center;
