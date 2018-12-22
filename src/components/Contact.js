@@ -114,18 +114,19 @@ const ContactFormStyles = styled.form`
 
 const ContactLabelStyles = styled.div`
   margin: 0.5rem 0;
+  font-size: .9em;
   label {
     padding: 0.1rem 0.5rem;
     display: block;
     text-align: left;
     text-transform: capitalize;
     color: white;
-    background: rgba(100, 100, 100, 0.4);
+    background: rgba(100, 100, 100, 0.6);
   }
 
   input,
   textarea {
-    opacity: 0.8;
+    opacity: 0.9;
     width: 100%;
     padding: 0.3rem 0.5rem;
   }
