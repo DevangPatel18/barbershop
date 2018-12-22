@@ -13,7 +13,7 @@ const SectionHeaderStyles = styled.div`
     flex-direction: column;
     align-items: center;
     font-family: 'Frank Ruhl Libre';
-    font-size: 4.23em;
+    font-size: 5.14em;
     font-weight: 100;
     color: #af9300;
   }
@@ -62,7 +62,7 @@ const SectionHeaderStyles = styled.div`
 
   @media (min-width: 761px) {
     padding: 1rem;
-    font-size: calc(0.6075em + ((1vw - 7.61px) * 1.626));
+    font-size: calc(0.6075em + ((1vw - 7.61px) * 0.83));
 
     h2 {
       :after {
@@ -76,7 +76,7 @@ const SectionHeaderStyles = styled.div`
   }
 
   @media (min-width: 1130px) {
-    font-size: 17px;
+    font-size: 14px;
 
     h2 {
       :after {
