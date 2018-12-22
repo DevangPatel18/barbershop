@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 const ButtonStyles = styled.div`
   margin: 1rem;
@@ -23,6 +23,10 @@ const ButtonStyles = styled.div`
       box-shadow: inset 0 0 1px 2rem #af9300;
       color: white;
     }
+
+    ${props => props.contact && css`
+      background: rgba(255, 255, 255, 0.7);
+    `}
   }
 
   @media (max-width: 760px) {
@@ -39,7 +43,7 @@ const ButtonStyles = styled.div`
 `
 
 const Button = props => (
-  <ButtonStyles white={props.white}>
+  <ButtonStyles white={props.white} contact={props.contact}>
     {props.href && <a href={props.href}>{props.text}</a>}
     {props.submit && <button type="submit">submit</button>}
   </ButtonStyles>

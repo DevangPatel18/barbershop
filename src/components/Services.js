@@ -98,9 +98,8 @@ const ServicesBackgroundStyles = styled(Img)`
 
 const ServicesMenuStyles = styled.ul`
   font-family: 'Roboto';
-  font-size: 24px;
+  font-size: 1.5em;
   color: black;
-  overflow-x: hidden;
   list-style: none;
   padding-top: 1em;
   width: 100%;
@@ -136,19 +135,17 @@ const ServicesMenuItemStyles = styled.li`
   }
 
   margin: 0 auto;
+  overflow: hidden;
 
   @media (max-width: 760px) {
     max-width: 310px;
-    font-size: 14px;
   }
 
   @media (min-width: 761px) {
-    font-size: calc(14px + ((1vw - 7.61px) * 2.71));
-    margin-bottom: calc((1vw - 7.61px) * 7.826);
+    margin-bottom: calc((1vw - 7.61px) * 6.829);
   }
 
   @media (min-width: 1130px) {
-    font-size: 24px;
     margin-bottom: 1.2em;
   }
 `

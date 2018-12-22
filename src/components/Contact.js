@@ -87,47 +87,53 @@ const ContactFormStyles = styled.form`
   max-width: 600px;
   padding: 1rem;
   z-index: 1;
-  background: rgba(100, 100, 100, 0.4);
-
-  label {
-    display: block;
-    text-align: left;
-    margin-bottom: 1rem;
-    text-transform: capitalize;
-    color: white;
-  }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
   .contact-form-top {
     display: flex;
     justify-content: space-between;
 
-    label {
+    div {
       width: 48%;
     }
   }
 
+  @media (max-width: 760px) {
+    margin: 0;
+
+    .contact-form-top {
+      flex-direction: column;
+      div {
+        width: 100%;
+      }
+    }
+  }
+`
+
+const ContactLabelStyles = styled.div`
+  margin: 0.5rem 0;
+  font-size: .9em;
+  label {
+    padding: 0.1rem 0.5rem;
+    display: block;
+    text-align: left;
+    text-transform: capitalize;
+    color: white;
+    background: rgba(100, 100, 100, 0.6);
+  }
+
   input,
   textarea {
-    opacity: 0.8;
+    opacity: 0.9;
     width: 100%;
     padding: 0.3rem 0.5rem;
-    margin-top: 5px;
   }
 
   textarea {
     resize: none;
     box-shadow: none;
-  }
-
-  @media (max-width: 760px) {
-    margin: 0;
-    width: 90%;
-    .contact-form-top {
-      flex-direction: column;
-      label {
-        width: 100%;
-      }
-    }
   }
 `
 
@@ -169,8 +175,8 @@ class Contact extends Component {
 
             <ContactFormStyles>
               <div className="contact-form-top">
-                <label htmlFor="name">
-                  name
+                <ContactLabelStyles>
+                  <label htmlFor="name">name</label>
                   <input
                     type="text"
                     id="name"
@@ -178,9 +184,9 @@ class Contact extends Component {
                     autoComplete="nope"
                     required
                   />
-                </label>
-                <label htmlFor="phone">
-                  phone
+                </ContactLabelStyles>
+                <ContactLabelStyles>
+                  <label htmlFor="phone">phone</label>
                   <input
                     type="text"
                     id="phone"
@@ -189,10 +195,10 @@ class Contact extends Component {
                     onKeyPress={evt => this.handleNumberCheck(evt)}
                     required
                   />
-                </label>
+                </ContactLabelStyles>
               </div>
-              <label htmlFor="email">
-                email
+              <ContactLabelStyles>
+                <label htmlFor="email">email</label>
                 <input
                   type="email"
                   id="email"
@@ -200,16 +206,17 @@ class Contact extends Component {
                   autoComplete="nope"
                   required
                 />
-              </label>
-              <label htmlFor="subject">
-                subject
+              </ContactLabelStyles>
+              <ContactLabelStyles>
+                <label htmlFor="subject">subject</label>
                 <input type="text" id="subject" name="subject" />
-              </label>
-              <label htmlFor="message">
-                message
+              </ContactLabelStyles>
+              <ContactLabelStyles>
+                <label htmlFor="message">message</label>
                 <textarea rows="6" id="message" name="message" required />
-              </label>
-              <Button submit />
+              </ContactLabelStyles>
+
+              <Button submit contact/>
             </ContactFormStyles>
           </ContactStyles>
         )}
