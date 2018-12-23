@@ -73,7 +73,7 @@ const HeaderInfoStyles = styled.div`
   color: white;
   text-align: center;
   text-transform: none;
-  margin: 1rem 0 2rem;
+  margin: 2rem 0;
   font-family: 'Frank Ruhl Libre';
 
   p {
@@ -128,8 +128,9 @@ const Header = ({ siteTitle }) => (
               <span className="divider" /> SUN: Closed
             </p>
             <p>
-              (416) 999 9991 <span className="divider" /> barbs@shop.com
+              652 Auburn Street <span className="divider" /> (416) 999 9991{' '}
             </p>
+            <p>barbs@shop.com</p>
           </HeaderInfoStyles>
           <Button href="#reservations" text="BOOK RESERVATION" />
         </HeaderLogoStyles>
