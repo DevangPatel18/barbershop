@@ -70,7 +70,7 @@ const HeaderLogoStyles = styled.div`
 `
 
 const HeaderInfoStyles = styled.div`
-  color: #b9b9b9;
+  color: white;
   text-align: center;
   text-transform: none;
   margin: 1rem 0 2rem;
