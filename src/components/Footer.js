@@ -80,10 +80,13 @@ const Footer = () => {
           <p>Sat: 10 am - 5 pm</p>
           <p>Sun: Closed</p>
         </SectionHeader>
-        <SectionHeader footer headerTitle="Phone">
-          <p>(416) 999 9991</p>
+        <SectionHeader footer headerTitle="Address">
+          <p>652 Auburn Street</p>
+          <p>Toronto, ON</p>
+          <p>M5R 2J8</p>
         </SectionHeader>
-        <SectionHeader footer headerTitle="Email">
+        <SectionHeader footer headerTitle="Contact">
+          <p>(416) 999 9991</p>
           <p>barbs@shop.com</p>
         </SectionHeader>
         <SectionHeader footer headerTitle="Social">

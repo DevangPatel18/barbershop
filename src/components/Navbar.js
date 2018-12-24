@@ -18,7 +18,7 @@ const NavbarStyles = styled.nav`
   transition: all 0.5s ease;
 
   ul {
-    padding: 3rem 0;
+    padding: 1.5rem 0;
     width: 1280px;
     display: flex;
     justify-content: space-around;
@@ -119,8 +119,6 @@ class Navbar extends Component {
     this.handleMenuClick = this.handleMenuClick.bind(this)
   }
 
-  // componentWillMount() {}
-
   componentDidMount() {
     let home = document.querySelector('#home')
 
@@ -128,14 +126,6 @@ class Navbar extends Component {
 
     window.addEventListener('scroll', this.navBarCheck)
   }
-
-  // componentDidUpdate(prevProps, prevState) {}
-
-  // componentWillReceiveProps(nextProps) {}
-
-  // shouldComponentUpdate(nextProps, nextState) {}
-
-  // componentWillUpdate(nextProps, nextState) {}
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.navBarCheck)
@@ -170,17 +160,17 @@ class Navbar extends Component {
           </span>
         </button>
         <Scrollspy
-          items={['home', 'about', 'services', 'gallery', 'contact']}
+          items={['home', 'services', 'about', 'gallery', 'contact']}
           currentClassName="scrollSpy"
         >
           <li>
             <AnchorLink href="#home">HOME</AnchorLink>
           </li>
           <li>
-            <AnchorLink href="#about">OUR STORY</AnchorLink>
+            <AnchorLink href="#services">SERVICES</AnchorLink>
           </li>
           <li>
-            <AnchorLink href="#services">SERVICES</AnchorLink>
+            <AnchorLink href="#about">OUR STORY</AnchorLink>
           </li>
           <li>
             <AnchorLink href="#gallery">GALLERY</AnchorLink>
