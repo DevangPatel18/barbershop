@@ -12,9 +12,9 @@ import Navbar from '../components/Navbar'
 const IndexPage = () => (
   <Layout>
     <Navbar />
-    <About />
-    <Amenities />
     <Services />
+    <Amenities />
+    <About />
     <Reservations />
     <Gallery />
     <Contact />
