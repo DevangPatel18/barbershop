@@ -18,7 +18,7 @@ const NavbarStyles = styled.nav`
   transition: all 0.5s ease;
 
   ul {
-    padding: 3rem 0;
+    padding: 1.5rem 0;
     width: 1280px;
     display: flex;
     justify-content: space-around;

@@ -9,8 +9,6 @@ const logo =
 
 const HeaderStyles = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
   background: #282828;
   z-index: 0;
 `
@@ -22,14 +20,20 @@ const HeaderBgStyles = styled(Img)`
   z-index: -1;
 `
 
-const HeaderLogoStyles = styled.div`
-  min-height: 100vh;
+const HeaderContainerStyles = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
+  justify-content: space-evenly;
   padding: 4rem 0;
+  min-height: 100vh;
+`
+
+const HeaderLogoStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
   font-size: 20px;
 
   img {
@@ -39,7 +43,7 @@ const HeaderLogoStyles = styled.div`
 
   p {
     font-size: 1em;
-    margin: 0.5em;
+    margin: 0;
   }
 
   .header-logo-top {
@@ -62,7 +66,7 @@ const HeaderLogoStyles = styled.div`
 
   @media (min-width: 1130px) {
     img {
-      width: calc(400px + ((1vw - 11.3px) * 15));
+      width: calc(400px + ((1vw - 11.3px) * 10));
     }
 
     font-size: 30px;
@@ -77,6 +81,8 @@ const HeaderInfoStyles = styled.div`
   font-family: 'Frank Ruhl Libre';
 
   p {
+    margin: 0.5em 0;
+
     @media (max-width: 760px) {
       font-size: 12px;
     }
@@ -118,10 +124,12 @@ const Header = ({ siteTitle }) => (
           style={{ position: 'absolute' }}
           fluid={data.file.childImageSharp.fluid}
         />
-        <HeaderLogoStyles>
-          <p className="header-logo-top">traditional men's hair salon</p>
-          <img src={logo} alt="logo" />
-          <p className="header-logo-bottom">classic & modern cuts</p>
+        <HeaderContainerStyles>
+          <HeaderLogoStyles>
+            <p className="header-logo-top">traditional men's hair salon</p>
+            <img src={logo} alt="logo" />
+            <p className="header-logo-bottom">classic & modern cuts</p>
+          </HeaderLogoStyles>
           <HeaderInfoStyles>
             <p>
               M - F: 9 am - 7 pm <span className="divider" /> SAT: 10 am - 5 pm{' '}
@@ -133,7 +141,7 @@ const Header = ({ siteTitle }) => (
             <p>barbs@shop.com</p>
           </HeaderInfoStyles>
           <Button href="#reservations" text="BOOK RESERVATION" />
-        </HeaderLogoStyles>
+        </HeaderContainerStyles>
       </HeaderStyles>
     )}
   />
