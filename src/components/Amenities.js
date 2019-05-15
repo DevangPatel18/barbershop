@@ -13,7 +13,7 @@ const AmenitiesStyles = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
+  min-height: 40vh;
   font-size: 15px;
   padding: 4rem 0;
 `
@@ -24,19 +24,16 @@ const AmenitiesBgStyles = styled(Img)`
   left: 0;
   width: 100%;
   height: 100%;
-  filter: brightness(0.6);
+  filter: brightness(0.3);
   z-index: -1;
 `
 
 const AmenitiesContainerStyles = styled.div`
   width: 100%;
   margin: 0 5em;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  @media (max-width: 760px) {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
   @media (min-width: 761px) {
     font-size: calc(15px + ((1vw - 7.61px) * 1.35));
@@ -45,23 +42,19 @@ const AmenitiesContainerStyles = styled.div`
     font-size: 20px;
   }
 `
-const AmenitiesExampleStyles = styled.div`
+const AmenitiesItemStyles = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-self: center;
-  width: 20em;
-  height: 6em;
+  width: 7em;
   font-family: 'Roboto';
   color: white;
-  margin: 2em 0;
-  padding: 1rem;
-  border-radius: 2em 0;
-  box-shadow: inset 0 0 1em white;
-  background: rgba(0, 0, 0, 0.6);
+  margin: 0 2.5em;
 
   svg {
-    width: 3em;
-    margin: 0 1em;
+    width: 100%;
+    padding: 1.5em 0;
 
     path {
       fill: #af9300;
@@ -69,8 +62,18 @@ const AmenitiesExampleStyles = styled.div`
   }
 
   @media (max-width: 760px) {
-    margin: 1rem 0.5rem;
+    width: 5em;
+    margin: 0rem 3rem;
   }
+`
+
+const AmenitiesItemTextStyles = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
 `
 
 const Amenities = () => (
@@ -93,18 +96,28 @@ const Amenities = () => (
           fluid={data.file.childImageSharp.fluid}
         />
         <AmenitiesContainerStyles>
-          <AmenitiesExampleStyles>
-            <Cash /> Take cash and debit
-          </AmenitiesExampleStyles>
-          <AmenitiesExampleStyles>
-            <CCard /> Accept Visa and Mastercard
-          </AmenitiesExampleStyles>
-          <AmenitiesExampleStyles>
-            <Wifi /> Free hi-speed wifi
-          </AmenitiesExampleStyles>
-          <AmenitiesExampleStyles>
-            <Subway /> Near the subway
-          </AmenitiesExampleStyles>
+          <AmenitiesItemStyles>
+            <Cash />{' '}
+            <AmenitiesItemTextStyles>
+              Take cash and debit
+            </AmenitiesItemTextStyles>
+          </AmenitiesItemStyles>
+          <AmenitiesItemStyles>
+            <CCard />{' '}
+            <AmenitiesItemTextStyles>
+              Accept Visa and Mastercard
+            </AmenitiesItemTextStyles>
+          </AmenitiesItemStyles>
+          <AmenitiesItemStyles>
+            <Wifi />{' '}
+            <AmenitiesItemTextStyles>
+              Free hi-speed wifi
+            </AmenitiesItemTextStyles>
+          </AmenitiesItemStyles>
+          <AmenitiesItemStyles>
+            <Subway />{' '}
+            <AmenitiesItemTextStyles>Near the subway</AmenitiesItemTextStyles>
+          </AmenitiesItemStyles>
         </AmenitiesContainerStyles>
       </AmenitiesStyles>
     )}
