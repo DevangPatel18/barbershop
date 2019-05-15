@@ -24,7 +24,7 @@ const HeaderContainerStyles = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 4rem 0;
   min-height: 100vh;
 `
@@ -43,7 +43,7 @@ const HeaderLogoStyles = styled.div`
 
   p {
     font-size: 1em;
-    margin: 0;
+    margin: 0.5em;
   }
 
   .header-logo-top {
@@ -84,11 +84,11 @@ const HeaderInfoStyles = styled.div`
     margin: 0.5em 0;
 
     @media (max-width: 760px) {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     @media (min-width: 761px) {
-      font-size: calc(12px + ((1vw - 7.61px) * 2.439));
+      font-size: calc(14px + ((1vw - 7.61px) * 1.9));
     }
 
     @media (min-width: 1130px) {
