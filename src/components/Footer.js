@@ -114,7 +114,7 @@ const Footer = () => {
       </FooterContainerStyles>
 
       <FooterCopyStyles>
-        Copyright © 2018 Devang Patel. All rights reserved. Icons made by{' '}
+        Copyright © {new Date().getFullYear()} Devang Patel. All rights reserved. Icons made by{' '}
         <a
           href="https://www.flaticon.com/authors/smashicons"
           title="Smashicons"
