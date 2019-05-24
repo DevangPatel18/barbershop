@@ -132,7 +132,6 @@ const DividerStyles = styled(Divider)`
   margin-top: 0.3em;
   transition: all 0.2s;
   max-width: 4em;
-  transform: translateX(-50%);
 
   path {
     stroke: rgb(159, 159, 159);
