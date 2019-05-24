@@ -89,12 +89,20 @@ const NavbarStyles = styled.nav`
         font-size: 20px;
         margin: 2px 0;
         padding: 0 7px;
+        width: 100%;
+
+        a {
+          display: block;
+          text-align: center;
+        }
+
+        :hover {
+          background-color: rgba(80, 80, 80, 0.9);
+        }
       }
 
       .scrollSpy {
-        box-shadow: none;
-        border-left: 3px solid #af9300;
-        border-right: 3px solid #af9300;
+        background: #af9300;
       }
     }
 
